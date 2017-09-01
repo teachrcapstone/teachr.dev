@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed315fcde47d229ac48323d1a49d22b3",
+    "content-hash": "058e3c365ac36ee98c4607b504a58712",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1955,6 +1955,64 @@
                 "dump"
             ],
             "time": "2017-08-27T08:38:33+00:00"
+        },
+        {
+            "name": "thomaspark/bootswatch",
+            "version": "v3.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thomaspark/bootswatch.git",
+                "reference": "4b0d3762f309326a6d66fa4ea18945a7fc11f8ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thomaspark/bootswatch/zipball/4b0d3762f309326a6d66fa4ea18945a7fc11f8ef",
+                "reference": "4b0d3762f309326a6d66fa4ea18945a7fc11f8ef",
+                "shasum": ""
+            },
+            "suggest": {
+                "robloach/component-installer": "Allows installation of Components via Composer"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "name": "bootswatch",
+                    "files": [
+                        "README.md",
+                        "LICENSE",
+                        "amelia/*",
+                        "cerulean/*",
+                        "cosmo/*",
+                        "cyborg/*",
+                        "darkly/*",
+                        "flatly/*",
+                        "fonts/*",
+                        "journal/*",
+                        "lumen/*",
+                        "paper/*",
+                        "readable/*",
+                        "sandstone/*",
+                        "simplex/*",
+                        "slate/*",
+                        "spacelab/*",
+                        "superhero/*",
+                        "united/*",
+                        "yeti/*"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "thomaspark",
+                    "email": "thomas@bootswatch.com"
+                }
+            ],
+            "description": "Themes for Bootstrap",
+            "time": "2016-07-30T21:56:26+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
