@@ -18,7 +18,7 @@
 			</div>
 
 			<div>
-				Password
+				Password:
 				<input type="password" name="password" id="password">
 			</div>
 
@@ -32,3 +32,4 @@
 			</div>
 		</form>	
 	</main>
+@stop
