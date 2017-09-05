@@ -23,3 +23,5 @@ Route::get('/404', function(){
 Route::resource('posts', 'PostsController');
 
 Route::resource('plans', 'PlansController');
+
+Route::resource('users', 'UsersController');
