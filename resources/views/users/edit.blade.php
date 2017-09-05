@@ -18,6 +18,8 @@
 
 			{!! csrf_field() !!}
 
+			<input type="BUTTON" class="btn" value="update icon..." id="updateIcon" onclick="updateIcon()">
+
 
 			<div class="form-group">
 

@@ -3,6 +3,7 @@
 <head>
 	@yield('title')
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 </head>
 <body>
 
@@ -21,7 +22,7 @@
 
 
 	@yield('content')
-
+	@include('layouts.partials._filestack')
 	@include('layouts.partials._footer')
 </body>
 </html>

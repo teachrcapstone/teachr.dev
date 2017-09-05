@@ -12,7 +12,7 @@
 
 		<div class="row">
 			<div class="col-sm-6">
-				
+				<img src="/img/teachrApple.png">
 				<h4>  {{ $user->name }}</h4>		
 				<p>Email: {{$user->email}}</p>
 				<p>Created At: {{$user->created_at }}</p>
