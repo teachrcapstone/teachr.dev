@@ -3,6 +3,10 @@
 		<div class="navbar-header">
 			<i class="glyphicon glyphicon-apple navbar-brand">Teachr</i>
 		</div>
+		<ul class="nav navbar-nav">
+			<li><a href="#">Lessons</a></li>
+			<li><a href="#">Logout</a></li>
+		</ul>
 		<!-- <ul class="nav navbar-nav navbar-right">
 			<li><a href="#">Login <i class="glyphicon glyphicon-log-in"></i></a></li>
 			<li><a href="#">Register <i class="glyphicon glyphicon-log-in"></i></a></li>

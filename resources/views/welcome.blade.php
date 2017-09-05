@@ -2,19 +2,17 @@
 
 @section('title')
     <title>Teachr</title>
+    <style type="text/css">
+        #chalk{
+            background: url('/img/chalkboardtext.png');
+        }      
+
+    </style>
 @stop
 
 @section('content')
-    <main class="container">
-        <div class="row">
-            <div class="jumbotron">BLAH</div>
-        </div>
-		<div class="row">
-            	<button type="button" class="btn col-md-6">Login</button>
-
-            	<button type="button" class="btn col-md-6">Register</button>
-		</div>
-
-        </div>
-    </main>
+<body>
+    
+    
+</body>
 @stop
