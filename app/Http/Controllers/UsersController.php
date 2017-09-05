@@ -113,8 +113,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+
+        $user->delete();
+
+        Log::info('User ' . $user->id . ' was deleted');
+
+        $request->session()->flash("successMessage" , "Your account was successfully deleted");
+
+        return \Redirect::action('/');
     }
 }
