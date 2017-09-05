@@ -6,7 +6,7 @@
 		<ul class="nav navbar-nav">
 			<li><a href="#">Dashboard</a></li>
 			<li><a href="{{action('PlansController@index')}}">Lessons</a></li>
-			<li><a href="#">Logout</a></li>
+			<li><a href="{{ action('Auth\AuthController@getLogout') }}"">Logout</a></li>
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
