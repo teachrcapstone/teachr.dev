@@ -15,7 +15,7 @@
 
 			<textarea class="form-control" type="textarea" name="content" rows="4" cols="20"> {{old('content')}} </textarea>
 
-			<p> placeholder for file upload</p>
+			<!-- <p> placeholder for file upload</p> -->
 
 			{{ method_field('POST')}}
 
