@@ -4,6 +4,7 @@
 			<i class="glyphicon glyphicon-apple navbar-brand">Teachr</i>
 		</div>
 		<ul class="nav navbar-nav">
+			<li><a href="#">Dashboard</a></li>
 			<li><a href="#">Lessons</a></li>
 			<li><a href="#">Logout</a></li>
 		</ul>
