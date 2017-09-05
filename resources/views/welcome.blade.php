@@ -1,45 +1,52 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.master')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
+    <title>Teachr</title>
+    <style type="text/css">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+        body {
+            padding-top: 6em;
+        }
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+        div.chalk {
+            content: url("/img/chalkboardtext.png");
+            height: 100%;
+            max-width: auto;
+        }
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+        footer {
+            color: white;
+        }
+    </style>
+@stop
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
+@section('content')
     <body>
+      <main>
         <div class="container">
-            <div class="content">
-                <div class="title">Teachr</div>
+            <div class="row">
+                <div class="col-xs-12 chalk "></div>
+            </div>
+            <!-- buttons are intended to be larger -->
+            <div class="row btn-group-lg">
+                <div class="col-md-6 btn">
+                    <button class="btn btn-primary">login</button>
+                </div>
+                <div class="col-md-6 btn">
+                    <button class="btn btn-primary">signup</button>
+                </div>
             </div>
         </div>
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>What is Teachr?</h1>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                </div>
+            </div>
+        </div>
+
+      </main>     
     </body>
-</html>
+@stop
