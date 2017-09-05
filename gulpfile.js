@@ -12,5 +12,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.copy('resources/assets/flatly/bootstrap.min.css', 'public/css');
+    mix.copy('resources/assets/fonts', 'public/fonts');
 });
