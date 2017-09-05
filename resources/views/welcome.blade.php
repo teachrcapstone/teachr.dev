@@ -7,9 +7,14 @@
 @section('content')
     <main class="container">
         <div class="row">
-            <div class="col-xs-12">BLAH</div>
-            <div class="col-md-6">Login</div>
-            <div class="col-md-6">Register</div>
+            <div class="jumbotron">BLAH</div>
+        </div>
+		<div class="row">
+            	<button type="button" class="btn col-md-6">Login</button>
+
+            	<button type="button" class="btn col-md-6">Register</button>
+		</div>
+
         </div>
     </main>
 @stop

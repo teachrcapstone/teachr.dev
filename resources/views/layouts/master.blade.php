@@ -6,9 +6,13 @@
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-	<!-- include navbar here -->
+
+	<!-- if user authorized... make navbar accessible-->
+	@include('layouts.partials._navbar')
+	<!-- ...end if -->
+
 	@yield('content')
 
-	<!-- include footer here -->
+	@include('layouts.partials._footer')
 </body>
 </html>
