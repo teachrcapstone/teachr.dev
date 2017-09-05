@@ -7024,3 +7024,6 @@ a.list-group-item-danger.active:focus {
 .navbar .container-fluid {
   width: 95%;
 }
+body {
+  margin-top: 50px;
+}
