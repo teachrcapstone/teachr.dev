@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use \App\User as User; 
+use Log; 
+use Auth;
 
 class UsersController extends Controller
 {
@@ -16,7 +19,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        $data['users'] = $users;
+        return view('users.index' , $data);
+
     }
 
     /**
@@ -48,7 +55,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        $user = User::findOrFail($id);
+        
+        $data['user'] = $user;
+
+        Log::info('User account ' . $user->id . ' was viewed');
+
+        return view('users.show', $data);
     }
 
     /**
@@ -59,7 +73,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);    
+
+        $data['user'] = $user;
+
+        return view('users.edit', $data);
     }
 
     /**
@@ -71,7 +89,22 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->validate($request, User::$rules);
+
+        $user = User::findOrFail($id);
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        $user->save();
+
+        Log::info('User ' . $user->id . ' was edited');
+
+        $request->session()->flash("successMessage" , "Your account was updataed successfully");
+
+
+        return \Redirect::action('UsersController@show', $user->id);
     }
 
     /**
@@ -80,8 +113,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+
+        $user->delete();
+
+        Log::info('User ' . $user->id . ' was deleted');
+
+        $request->session()->flash("successMessage" , "Your account was successfully deleted");
+
+        return \Redirect::action('/');
     }
 }
