@@ -63,7 +63,7 @@ class PlansController extends Controller
         $plan->created_by = Auth::id();
         $plan->save();
 
-        return \Redirect::action('UsersController@show');
+        return \Redirect::action('UsersController@show', Auth::id());
     }
 
     /**
@@ -76,8 +76,8 @@ class PlansController extends Controller
     {
         //
         $plan = Plan::findOrFail($id);
-        $data['post'] = $plan;
-        return view('posts/show', $data);
+        $data['plan'] = $plan;
+        return view('plans.show', $data);
     }
 
     /**
@@ -112,7 +112,7 @@ class PlansController extends Controller
         $plan->file_uploads = $request->file_uploads;
         $plan->save();
 
-        return \Redirect::action('PostsController@show');
+        return \Redirect::action('UsersController@show', Auth::id());
     }
 
     /**
