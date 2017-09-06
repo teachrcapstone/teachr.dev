@@ -16,12 +16,12 @@ class CreatePlansTable extends Migration
         {
 
             $table->increments('id');
-            $table->string('lesson_name');
+            $table->string('name');
             $table->string('tek');
             $table->string('objective');
             $table->string('department');
             $table->string('grade_level')->nullable();
-            $table->text('lesson_content')->nullable();
+            $table->text('content')->nullable();
             $table->string('file_uploads')->nullable();
 
             $table->integer('created_by')->unsigned();
@@ -42,6 +42,3 @@ class CreatePlansTable extends Migration
         Schema::drop('plans');
     }
 }
-
-
-
