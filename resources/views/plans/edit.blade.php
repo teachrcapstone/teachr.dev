@@ -8,7 +8,7 @@
 
 	<main class="container">
 		<h1>Update Your Lesson Plan</h1>
-		<form method="POST" action="{{action('PostsController@update')}}">
+		<form method="POST" action="{{action('PlansController@update')}}">
 			{!! csrf_field() !!}
 
 			<input class="form-control" type="text" name="name" placeholder="Lesson Name..." value="{{old('title')}}">
@@ -50,6 +50,8 @@
 			{{ method_field('POST')}}
 
 			<button class="btn-success btn" type="submit">Turn in Your Corrections!</button>
+
+		</form>
 	</main>
 
 @stop

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PlansController;
 use App\Models\Plan as Plan;
+// use App\
+use Auth;
 
 class PlansController extends Controller
 {
@@ -24,7 +26,6 @@ class PlansController extends Controller
     {
         //
         $plans = Plan::all();
-
         $data['plans'] = $plans;
 
         return view('plans.index', $data);
@@ -50,6 +51,7 @@ class PlansController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
         $plan = new Plan();
         $plan->name = $request->name;
         $plan->tek = $request->tek;
@@ -60,6 +62,8 @@ class PlansController extends Controller
         $plan->file_uploads = $request->file_uploads;
         $plan->created_by = Auth::id();
         $plan->save();
+
+        return \Redirect::action('UsersController@show');
     }
 
     /**
@@ -71,6 +75,9 @@ class PlansController extends Controller
     public function show($id)
     {
         //
+        $plan = Plan::findOrFail($id);
+        $data['post'] = $plan;
+        return view('posts/show', $data);
     }
 
     /**
@@ -95,6 +102,17 @@ class PlansController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $plan = Plan::findOrFail($id);
+        $plan->name = $request->name;
+        $plan->tek = $request->tek;
+        $plan->objective = $request->objective;
+        $plan->department = $request->department;
+        $plan->grade_level = $request->grade_level;
+        $plan->content = $request->content;
+        $plan->file_uploads = $request->file_uploads;
+        $plan->save();
+
+        return \Redirect::action('PostsController@show');
     }
 
     /**
