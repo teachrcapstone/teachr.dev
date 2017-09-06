@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Create a Lesson Plan</title>
+	<title>Create a Post</title>
 @stop
 
 @section('content')
@@ -11,23 +11,30 @@
 		<form method="POST" action="{{ action('PostsController@store') }}">
 			{!! csrf_field() !!}
 
-			<input class="form-control" type="text" name="title" placeholder="Discussion Topic or Question" value="{{old('title')}}">
+			<div class="form-group">
+				<input class="form-control" type="text" name="title" placeholder="Discussion Topic or Question" value="{{old('title')}}">
+			</div>
 
-			<textarea class="form-control" type="textarea" name="content" rows="4" cols="20"> {{old('content')}} </textarea>
+			<div class="form-group">
+				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20"> {{ old('content') }} </textarea>
+			</div>
 
-			<select name='category' class="form-control">
-				<option name="general" value="general">General</option>
-				<option name="elementary" value="elementary">Elementary</option>
-				<option name="middle" value="middle">Middle</option>
-				<option name="high" value="high">High</option>
-				<option name="technology" value="technology">Technology</option>
-				<option name="management" value="management">Classroom Management</option>
-				<option name="admin" value="admin">Administration</option>
-				<option name="random" value="random">Random</option>
-			</select>
+			<div class="form-group">
+				<select name='category' class="form-control">
+					<option name="general" value="general">General</option>
+					<option name="elementary" value="elementary">Elementary</option>
+					<option name="middle" value="middle">Middle</option>
+					<option name="high" value="high">High</option>
+					<option name="technology" value="technology">Technology</option>
+					<option name="management" value="management">Classroom Management</option>
+					<option name="admin" value="admin">Administration</option>
+					<option name="other" value="other">Other</option>
+				</select>
+			</div>
 
 
 			<button class="btn-success btn" type="submit">Submit</button>
+		</form>
 	</main>
 
 @stop

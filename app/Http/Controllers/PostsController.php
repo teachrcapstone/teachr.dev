@@ -78,7 +78,13 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-    
+        $post = Post::findOrFail($id);
+        
+        $data['post'] = $post;   
+
+        Log::info('Post ' . $post->id . ' was viewed');
+
+        return view('posts.show', $data);
     }
 
     /**
@@ -89,7 +95,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);    
+
+        $data['post'] = $post;
+
+        return view('posts.edit', $data);
     }
 
     /**
@@ -101,7 +111,23 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->validate($request, Post::$rules);
+
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category = $request->category;
+        $post->created_by = Auth::id();
+
+        $post->save();
+
+        Log::info('Post ' . $post->id . ' was edited');
+
+        $request->session()->flash("successMessage" , "Your post was updataed successfully");
+
+
+        return \Redirect::action('PostsController@index');
     }
 
     /**
@@ -110,8 +136,16 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+
+        Log::info('Post ' . $post->id . ' was deleted');
+
+        $request->session()->flash("successMessage" , "Your post was successfully deleted");
+
+        return \Redirect::action('PostsController@index');
     }
 }
