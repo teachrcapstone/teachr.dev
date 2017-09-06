@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use \App\Models\Post; 
+use Log;
+use Auth;
+use DB;
+
 
 class PostsController extends Controller
 {
@@ -14,13 +19,18 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function _construct(){
+    public function __construct(){
         $this->middleware('auth');
     }
 
     public function index()
     {
-        return view('posts.index');
+
+        $posts = Post::all();
+
+        $data['posts'] = $posts;
+
+        return view('posts.index', $data);
     }
 
     /**
@@ -41,7 +51,23 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::id();
+
+        $result = $this->validate($request, Post::$rules);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category = $request->category;
+        $post->created_by = $userId;
+        $post->save();
+
+        Log::info($post);
+
+
+        $request->session()->flash("successMessage" , "Your post was posted successfully");
+
+        return \Redirect::action('PostsController@index');
     }
 
     /**
@@ -52,7 +78,7 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+    
     }
 
     /**

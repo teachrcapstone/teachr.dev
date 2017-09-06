@@ -8,7 +8,7 @@
 
 	<main class="container">
 		<h1>Create a Forum Post</h1>
-		<form method="POST" action="{{action('PostsController@store')}}">
+		<form method="POST" action="{{ action('PostsController@store') }}">
 			{!! csrf_field() !!}
 
 			<input class="form-control" type="text" name="title" placeholder="Discussion Topic or Question" value="{{old('title')}}">
@@ -26,7 +26,6 @@
 				<option name="random" value="random">Random</option>
 			</select>
 
-			{{ method_field('POST')}}
 
 			<button class="btn-success btn" type="submit">Submit</button>
 	</main>
