@@ -7,11 +7,28 @@
 			@if(Auth::check())
 				<ul class="nav navbar-nav">
 					<li><a href="{{ action('UsersController@show', Auth::id()) }}">Dashboard</a></li>
-					<li><a href="{{action('PlansController@index')}}">Lessons</a></li>
-					<li><a href="">Add Lesson</a></li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Lessons <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ action('PlansController@index') }}">View Lessons</a></li>
+								<li><a href="#">Add Lesson</a></li>
+							</ul>
+					</li>
+
+					<!-- <li><a href="{{action('PlansController@index')}}">Lessons</a></li> -->
+					<!-- <li><a href="">Add Lesson</a></li> -->
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discussion Board <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ action('PostsController@index') }}">View Posts</a></li>
+								<li><a href="{{ action('PostsController@create') }}">Add Post</a></li>
+							</ul>
+					</li>
+
 					<li><a href="{{ action('Auth\AuthController@getLogout') }}"">Logout</a></li>
 				</ul>
-
 
 			@else
 				<ul class="nav navbar-nav navbar-right">
@@ -28,3 +45,6 @@
 		</form>
 	</div>
 </nav>
+
+
+
