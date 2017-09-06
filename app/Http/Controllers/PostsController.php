@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use \App\Models\Post; 
+use Log;
+use Auth;
+use DB;
+
 
 class PostsController extends Controller
 {
@@ -14,13 +19,18 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function _construct(){
+    public function __construct(){
         $this->middleware('auth');
     }
 
     public function index()
     {
-        return view('posts.index');
+
+        $posts = Post::all();
+
+        $data['posts'] = $posts;
+
+        return view('posts.index', $data);
     }
 
     /**
@@ -41,7 +51,23 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::id();
+
+        $result = $this->validate($request, Post::$rules);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category = $request->category;
+        $post->created_by = $userId;
+        $post->save();
+
+        Log::info($post);
+
+
+        $request->session()->flash("successMessage" , "Your post was posted successfully");
+
+        return \Redirect::action('PostsController@index');
     }
 
     /**
@@ -52,7 +78,13 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        
+        $data['post'] = $post;   
+
+        Log::info('Post ' . $post->id . ' was viewed');
+
+        return view('posts.show', $data);
     }
 
     /**
@@ -63,7 +95,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);    
+
+        $data['post'] = $post;
+
+        return view('posts.edit', $data);
     }
 
     /**
@@ -75,7 +111,23 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->validate($request, Post::$rules);
+
+        $post = Post::findOrFail($id);
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->category = $request->category;
+        $post->created_by = Auth::id();
+
+        $post->save();
+
+        Log::info('Post ' . $post->id . ' was edited');
+
+        $request->session()->flash("successMessage" , "Your post was updataed successfully");
+
+
+        return \Redirect::action('PostsController@index');
     }
 
     /**
@@ -84,8 +136,16 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+
+        Log::info('Post ' . $post->id . ' was deleted');
+
+        $request->session()->flash("successMessage" , "Your post was successfully deleted");
+
+        return \Redirect::action('PostsController@index');
     }
 }
