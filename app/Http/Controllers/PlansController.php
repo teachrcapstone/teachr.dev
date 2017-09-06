@@ -38,6 +38,7 @@ class PlansController extends Controller
     public function create()
     {
         //
+        return view('plans.create');
     }
 
     /**
@@ -49,6 +50,16 @@ class PlansController extends Controller
     public function store(Request $request)
     {
         //
+        $plan = new Plan();
+        $plan->name = $request->name;
+        $plan->tek = $request->tek;
+        $plan->objective = $request->objective;
+        $plan->department = $request->department;
+        $plan->grade_level = $request->grade_level;
+        $plan->content = $request->content;
+        $plan->file_uploads = $request->file_uploads;
+        $plan->created_by = Auth::id();
+        $plan->save();
     }
 
     /**
@@ -71,6 +82,7 @@ class PlansController extends Controller
     public function edit($id)
     {
         //
+        return view('plans.edit');
     }
 
     /**
