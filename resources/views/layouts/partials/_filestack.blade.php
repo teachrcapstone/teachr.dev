@@ -14,10 +14,12 @@
         		var handle = result.filesUploaded[0].handle;
         		console.log(handle);
 
-        		// var imageHandle = "<input type='hidden' value='"+handle+"' name='image'></input>";
         		$("#filestack").after(function(){
-                                console.log("<input type='hidden' value='" + handle + "' name='image'></input>");
                                 return "<input type='hidden' value='" + handle + "' name='image'></input>";
+                        });
+
+                        $("#filestackConfirm").after(function(){
+                                return "<p>Image successfully uploaded!</p>";
                         });
 
         	});
