@@ -9,26 +9,32 @@
 	<main class="container">
 		<h1>Teachr Login</h1>
 
+		@if(Session::has('message'))
+			<div class="alert alert-danger">
+				{!! session('message') !!}
+			</div>
+		@endif
+
 		<form method="POST" action="/auth/login">
 			{!! csrf_field() !!}
 
-			<div>
+			<div class="form-group">
 				Email:
-				<input type="email" name="email" value="{{ old('email') }}">
+				<input class="form-control"  type="email" name="email" value="{{ old('email') }}">
 			</div>
 
-			<div>
+			<div class="form-group">
 				Password:
-				<input type="password" name="password" id="password">
+				<input class="form-control"  type="password" name="password" id="password">
 			</div>
 
-			<div>
+			<div class="form-group">
 				<input type="checkbox" name="remember">
 				Remember Me
 			</div>
 
 			<div>
-				<button type="submit">Login</button>
+				<button class="btn btn-success"  type="submit">Login</button>
 			</div>
 		</form>	
 	</main>
