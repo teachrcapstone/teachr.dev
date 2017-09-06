@@ -31,6 +31,7 @@ class AuthController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
@@ -66,4 +67,13 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function authenticated($request,$user)
+    {
+        return redirect('/users/' . $user->id);
+    }
+
+
+
+
 }
