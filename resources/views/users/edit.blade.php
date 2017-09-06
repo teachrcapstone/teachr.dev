@@ -20,7 +20,7 @@
 
 			<div class="form-group">
 	
-				<input type="BUTTON" class="btn" value="update icon..." id="updateIcon" onclick="updateIcon()">
+				<input type="BUTTON" id="filestackConfirm" class="btn" value="update icon..." id="updateIcon" onclick="updateIcon()">
 			</div>
 
 			<div class="form-group">
@@ -32,7 +32,7 @@
 			<div class="form-group">
 				
 				<input class="form-control" id="filestack" type="text" name="email" value="{{ $user->email }}" placeholder="Enter Updated Email">
-				<!-- filestack input gets appended here -->
+				<input id="imageEdit" type='hidden' value='{{$user->image}}' name='image'></input>
 			</div>
 
 
