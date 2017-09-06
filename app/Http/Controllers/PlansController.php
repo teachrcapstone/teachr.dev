@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PlansController;
+use App\Models\Plan as Plan;
 
 class PlansController extends Controller
 {
@@ -14,9 +16,18 @@ class PlansController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function _construct(){
+         $this->middleware('auth');
+    }
+
     public function index()
     {
         //
+        $plans = Plan::all();
+
+        $data['plans'] = $plans;
+
+        return view('plans.index', $data);
     }
 
     /**
