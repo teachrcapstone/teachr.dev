@@ -24,5 +24,7 @@
 	@yield('content')
 	@include('layouts.partials._filestack')
 	@include('layouts.partials._footer')
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
 </body>
 </html>
