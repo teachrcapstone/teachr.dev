@@ -38,9 +38,9 @@
 			@endif 
 
 		<!-- search bar -->
-		<form method="GET" action="#" class="navbar-form form-inline navbar-right">
+		<form method="GET" action="{{ action('PostsController@index') }}" class="navbar-form form-inline navbar-right" role="search">
 		{{!! csrf_field() !!}}
-			<input class="form-control mr-sm-2" name="search" type="text" placeholder="Search!">
+			<input class="form-control mr-sm-2" name="q" type="text" placeholder="Search!">
 			<button class="btn my-2 my-sm-0" type="submit">Go!</button>	
 		</form>
 	</div>

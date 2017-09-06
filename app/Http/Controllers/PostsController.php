@@ -23,15 +23,41 @@ class PostsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    // public function index()
+    // {
+
+    //     $posts = Post::all();
+
+    //     $data['posts'] = $posts;
+
+    //     return view('posts.index', $data);
+    // }
+
+
+    public function index(Request $request)
     {
+        if($request->has('q')){
+            $q = $request->q;
+            $posts = Post::search($q);
 
-        $posts = Post::all();
+        } else{
 
+            $posts = Post::with('user')
+            ->orderBy('created_at','DESC')
+            ->paginate(4);
+        }
+  
+        Log::info('A user just visited the index page');
+        
         $data['posts'] = $posts;
-
+       
         return view('posts.index', $data);
+
     }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
