@@ -12,7 +12,7 @@
 
 		<div class="row">
 			<div class="col-sm-6">
-				
+				<!-- put logic in place so that if an image is not uploaded via filestack, use default image of teachr app icon -->
 				<h4>  {{ $user->name }}</h4>		
 				<p>Email: {{$user->email}}</p>
 				<p>Created At: {{$user->created_at }}</p>
