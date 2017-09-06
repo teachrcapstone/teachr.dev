@@ -28,6 +28,12 @@
 			<div class="col-sm-6">
 				
 				<h2>{{ $user->name}}'s Lessons</h2>
+				@foreach($userPlans as $plan)
+					<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
+					<p>Created At: {{$plan->created_at}}</p>
+					<hr>
+				@endforeach
+
 				<!-- for each lesson user has, dedicate a sub-section showing the basic info per post (limit 3?) -->
 
 				<h2>{{ $user->name}}'s Posts</h2>

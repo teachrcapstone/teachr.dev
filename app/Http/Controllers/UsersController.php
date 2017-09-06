@@ -58,9 +58,11 @@ class UsersController extends Controller
         
         $user = User::findOrFail($id);
         $userPosts = $user->posts;
+        $userPlans = $user->plans;
         
         $data['user'] = $user;
         $data['userPosts'] = $userPosts;
+        $data['userPlans'] = $userPlans;
 
         Log::info('User account ' . $user->id . ' was viewed');
 
