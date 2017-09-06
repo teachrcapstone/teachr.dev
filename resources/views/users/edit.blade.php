@@ -18,8 +18,11 @@
 
 			{!! csrf_field() !!}
 
-			<input type="BUTTON" class="btn" value="update icon..." id="updateIcon" onclick="updateIcon()">
-
+		<!-- need to get image handle to upload to database -->
+			<div class="form-group">
+	
+				<input type="BUTTON" class="btn" value="update icon..." id="updateIcon" onclick="updateIcon()">
+			</div>
 
 			<div class="form-group">
 
