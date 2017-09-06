@@ -14,13 +14,11 @@
         		var handle = result.filesUploaded[0].handle;
         		console.log(handle);
 
-        		$("#filestackConfirm").after(function(){
-                               return "<p>Image successfully uploaded!</p>";
-                       });
+        		$('input[name=image]').val(handle);
 
-                        $("#filestackConfirm").after(function(){
-                                return "<p>Image successfully uploaded!</p>";
-                        });
+                $("#filestackConfirm").after(function(){
+                    return "<p>Image successfully uploaded!</p>";
+                });
 
         	});
         }
