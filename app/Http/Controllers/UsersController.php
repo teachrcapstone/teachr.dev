@@ -96,7 +96,7 @@ class UsersController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-
+        $user->image = $request->image;
         $user->save();
 
         Log::info('User ' . $user->id . ' was edited');

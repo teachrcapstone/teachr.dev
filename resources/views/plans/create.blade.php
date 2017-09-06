@@ -15,7 +15,10 @@
 
 			<textarea class="form-control" type="textarea" name="content" rows="4" cols="20"> {{old('content')}} </textarea>
 
-			<p> placeholder for file upload</p>
+			<div class="form-group">
+	
+				<input type="BUTTON" class="btn" value="update icon..." id="lessonPlan" onclick="lessonPlan()">
+			</div>
 
 			{{ method_field('POST')}}
 

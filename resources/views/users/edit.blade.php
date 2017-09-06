@@ -18,7 +18,6 @@
 
 			{!! csrf_field() !!}
 
-		<!-- need to get image handle to upload to database -->
 			<div class="form-group">
 	
 				<input type="BUTTON" class="btn" value="update icon..." id="updateIcon" onclick="updateIcon()">
@@ -32,8 +31,8 @@
 
 			<div class="form-group">
 				
-				<input class="form-control" type="text" name="email" value="{{ $user->email }}" placeholder="Enter Updated Email">
-
+				<input class="form-control" id="filestack" type="text" name="email" value="{{ $user->email }}" placeholder="Enter Updated Email">
+				<!-- filestack input gets appended here -->
 			</div>
 
 
