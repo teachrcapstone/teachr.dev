@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@include('layouts.partials._categorynav')
+
 @section('title')
 	<title>Discussion Topics</title>
 @stop
