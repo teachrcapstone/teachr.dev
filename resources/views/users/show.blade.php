@@ -36,7 +36,7 @@
 
 				<!-- for each lesson user has, dedicate a sub-section showing the basic info per post (limit 3?) -->
 
-				<h2>{{ $user->name}}'s Posts</h2>
+				<h2>My Posts</h2>
 				@foreach($userPosts as $posts)
 					<a href="{{action('PostsController@show', $posts->id)}}"><h3>{{$posts->title}}</h3></a>
 					<p>Created At: {{$posts->created_at}}</p>

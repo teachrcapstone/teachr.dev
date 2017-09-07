@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\Models\Post; 
+use \App\User as User; 
 use Log;
 use Auth;
 use DB;
@@ -194,4 +195,16 @@ class PostsController extends Controller
 
 		return \Redirect::action('PostsController@index');
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
