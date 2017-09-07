@@ -11,6 +11,10 @@
 		<p>{{$plan->content}}</p>
 		<p>Created: {{$plan->created_at}}</p>
 		<p>Updated: {{$plan->updated_at}}</p>
+		
+		<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}">Download Lesson Plan</button>
+		
+		<!-- <a href="/ViewerJS/#../path/to/filename.ext">yee</a> -->
 
 		<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 
