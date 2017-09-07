@@ -10,6 +10,7 @@ use App\Http\Controllers\PlansController;
 use App\Models\Plan as Plan;
 // use App\
 use Auth;
+use DB;
 
 class PlansController extends Controller
 {
@@ -22,11 +23,30 @@ class PlansController extends Controller
          $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         //
-        $plans = Plan::all();
-        $data['plans'] = $plans;
+        if (!empty($request->all())) {
+            // echo count($request);
+            // dd($request->all());
+            $search = $request->all();
+            $plans = DB::table('plans');
+
+            // dd($plans);
+
+            foreach($search as $key => $value){
+                $plans->where($key, 'like', $value);
+            }
+
+            // dd($plans);
+            $plans = $plans->get();
+            $data['plans'] = $plans;
+
+        } else {
+            $plans = Plan::all();
+            $data['plans'] = $plans;
+        }
+
 
         return view('plans.index', $data);
     }
