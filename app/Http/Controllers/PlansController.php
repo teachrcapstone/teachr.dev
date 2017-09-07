@@ -63,6 +63,9 @@ class PlansController extends Controller
         $plan->created_by = Auth::id();
         $plan->save();
 
+
+        $request->session()->flash("successMessage" , "Your plan was successfully created");
+
         return \Redirect::action('UsersController@show', Auth::id());
     }
 
@@ -89,7 +92,11 @@ class PlansController extends Controller
     public function edit($id)
     {
         //
-        return view('plans.edit');
+        $plan = Plan::findOrFail($id);
+
+        $data['plan'] = $plan;
+
+        return view('plans.edit', $data);
     }
 
     /**
@@ -112,6 +119,9 @@ class PlansController extends Controller
         $plan->file_uploads = $request->file_uploads;
         $plan->save();
 
+
+        $request->session()->flash("successMessage" , "Your plan was successfully updated");
+
         return \Redirect::action('UsersController@show', Auth::id());
     }
 
@@ -121,8 +131,17 @@ class PlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+        $plan = Plan::findOrFail($id);
+
+        $plan->delete();
+
+        // Log::info('Plan ' . $plan->id . ' was deleted');
+
+        $request->session()->flash("successMessage" , "Your plan was successfully deleted");
+
+        return \Redirect::action('UsersController@show', Auth::id());
     }
 }
