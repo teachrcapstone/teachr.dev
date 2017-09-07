@@ -14,7 +14,7 @@
 		
 
 		@if(isset($plan->file_uploads))
-		<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}">Download Lesson Plan</a>
+		<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
 		<br>
 		@endif  
 
