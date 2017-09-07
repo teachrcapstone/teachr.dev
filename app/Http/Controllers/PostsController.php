@@ -41,6 +41,8 @@ class PostsController extends Controller
 				$posts = Post::search($q);
 				
 			}
+			
+			$data['category'] = $request->category;
 
 			$data['posts'] = $posts;
 	   

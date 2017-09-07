@@ -8,7 +8,7 @@
 
 	<main class="container">
 		<div class="row">
-			<h1>Posts</h1>
+			<h1>Viewing "{{ $category }}" Posts</h1>
 
 		 @if($posts->count() == 0)
 
@@ -21,8 +21,8 @@
 			@foreach($posts as $post)
 				<h3><a href="{{ action('PostsController@show', $post->id) }}">{{$post->title}}</a></h3>
 				<p>Content: {{$post->content}}</p>
-				<p>Category: {{$post->category}}</p>
-
+<!-- 				<p>Category: {{$post->category}}</p>
+ -->
 
 				@if(Auth::check())
 					<a href="{{ action('UsersController@show', $post->created_by)}}"><p>Created By: {{$post->user->name}}</p></a>

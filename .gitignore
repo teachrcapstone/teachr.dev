@@ -3,3 +3,5 @@
 Homestead.yaml
 Homestead.json
 .env
+resources/views/.DS_Store
+resources/views/posts/.DS_Store

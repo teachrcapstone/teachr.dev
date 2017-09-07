@@ -17,7 +17,7 @@
 
 				<div class="row">
 					<div class="col-xs-12 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="all">View All</button>	
+						<button class="btn btn-default btn-block" type="submit" name="category" value="all">View All</button>	
 					</div>
 				</div>
 
@@ -25,13 +25,13 @@
 
 				<div class="row">
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="general">General</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="general">General</button>
 						
 					</div>
 					
 					<div class="col-xs-6 text-center">
 						
-						<button class="btn btn-default" type="submit" name="category" value="5">Technology</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="5">Technology</button>
 					</div>
 				</div>
 
@@ -40,11 +40,11 @@
 				<div class="row">
 
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="elementary">Elementary School (K-5)</button>		
+						<button class="btn btn-default btn-block" type="submit" name="category" value="elementary">Elementary School (K-5)</button>		
 					</div>
 						
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="6">Classroom Management </button>	
+						<button class="btn btn-default btn-block" type="submit" name="category" value="6">Classroom Management </button>	
 					</div>
 				</div>
 
@@ -53,11 +53,11 @@
 				<div class="row">
 
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="3">Middle School (6-8)</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="3">Middle School (6-8)</button>
 					</div>
 
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="7">Administration</button>		
+						<button class="btn btn-default btn-block" type="submit" name="category" value="7">Administration</button>		
 					</div>
 					
 				</div>
@@ -66,11 +66,11 @@
 
 				<div class="row">
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default" type="submit" name="category" value="4">High School (9-12)</button>	
+						<button class="btn btn-default btn-block" type="submit" name="category" value="4">High School (9-12)</button>	
 					</div>
 
 					<div class="col-xs-6 text-center">	
-						<button class="btn btn-default" type="submit" name="category" value="8">Other</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="8">Other</button>
 					</div>
 					
 				</div>
