@@ -8,7 +8,7 @@
 
 	<main class="container">
 		<h1>Update Your Lesson Plan</h1>
-		<form method="POST" action="{{action('PlansController@update')}}">
+		<form method="POST" action="{{action('PlansController@update', $plan->id)}}">
 			{!! csrf_field() !!}
 
 			<input class="form-control" type="text" name="name" placeholder="Lesson Name..." value="{{ $plan->name }}">
@@ -45,13 +45,28 @@
 
 			<textarea class="form-control" type="textarea" name="content" placeholder="Lesson Content" rows="4" cols="20" > {{ $plan->content }} </textarea>
 
-			<!-- <p> placeholder for file upload</p> -->
+			<div class="form-group">
+				<br>
+				<input type="BUTTON"  class="btn" value="Update Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
+				<input id="uploadedLesson" type='hidden' value='{{$plan->file_uploads}}' name='file_uploads'></input>
+				<h6>Accepted File Types: .doc, .docx, .pdf</h6>
+
+
+			</div>
+
 
 			{{ method_field('PUT')}}
 
 			<button class="btn-success btn" type="submit">Turn in Your Corrections!</button>
-
 		</form>
+		<form action="{{ action('PlansController@destroy', $plan->id) }}" method="post">
+			{!! csrf_field() !!}
+
+			<button class="btn btn-danger">Delete Plans</button>
+
+			{{ method_field('DELETE') }}
+		</form>
+
 	</main>
 
 @stop
