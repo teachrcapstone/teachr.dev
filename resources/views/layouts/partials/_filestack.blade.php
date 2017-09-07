@@ -10,9 +10,7 @@
         		fromSources: ['local_file_system', 'facebook', 'googledrive', 'webcam'],
         		imageMax: [400,400],
         	}).then(function(result){
-        		console.log(JSON.stringify(result));
         		var handle = result.filesUploaded[0].handle;
-        		console.log(handle);
 
         		$('input[name=image]').val(handle);
 
@@ -29,7 +27,6 @@
                 	client.pick({
                 		accept: [".doc", ".docx", ".pdf"],
                 		maxFiles: 1,
-                		minFiles: 1,
                 		fromSources: ['local_file_system', 'googledrive', 'gmail', 'dropbox',],
                 		maxSize: 1024*1024
                 	}).then(function(result){
@@ -37,7 +34,11 @@
                 		var handle = result.filesUploaded[0].handle;
                 		console.log(handle);
 
+                        $('input[name=file_uploads]').val(handle);
 
+                        $("#filestackConfirm").after(function(){
+                            return "<p>Document successfully uploaded!</p>";
+                        });
 
                 	});
                 }

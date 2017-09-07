@@ -4,6 +4,7 @@
 	@yield('title')
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+	<script src="https://api.filestackapi.com/filestack.js"></script>
 </head>
 <body>
 
