@@ -22,12 +22,12 @@
 			<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 			
 		</div>
-
+		@if(isset($plan->file_uploads))
 		<div class="col-sm-6">
 			<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='389' height='550' class="embed-responsive-item" allowfullscreen"></iframe>
 			
 		</div>
-
+		@endif
 
 	</main>
 @stop
