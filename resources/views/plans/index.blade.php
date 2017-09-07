@@ -12,7 +12,7 @@
 			<h2>Filter results</h2>
 			<ul class="nav nav-stacked">
 				{{-- @if ($request->department) --}}
-				<form class="" action="index.html" method="get">
+				<form class="" action="{{ action('PlansController@index') }}" method="get">
 
 					<li class=''>Department
 						<ul>
@@ -112,7 +112,7 @@
 						</ul>
 					</li>
 
-				<button type="submit" name="button">Filter</button>
+				<button type="submit">Filter</button>
 				</form>
 			</ul>
 		</nav>
