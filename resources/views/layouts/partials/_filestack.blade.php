@@ -25,10 +25,10 @@
                 function lessonPlan(){
                 	console.log("Updating Lesson...");
                 	client.pick({
-                		accept: [".doc", ".docx", ".pdf"],
+                		accept: [".doc", ".docx", ".ppt", ".pptx", ".jpg", ".png", ".html", ".txt"],
                 		maxFiles: 1,
                 		fromSources: ['local_file_system', 'googledrive', 'gmail', 'dropbox',],
-                		maxSize: 1024*1024
+                		maxSize: 1024*1024,
                 	}).then(function(result){
                 		console.log(JSON.stringify(result));
                 		var handle = result.filesUploaded[0].handle;
