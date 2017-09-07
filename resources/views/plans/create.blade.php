@@ -44,12 +44,21 @@
 					<option value="11">11</option>
 					<option value="12">12</option>
 				</select>
+
+				<div class="form-group">
+					<input type="BUTTON"  class="btn" value="Upload Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
+				<!-- 	<input id="uploadedLesson" type='hidden' value='{{old("file_uploads")}}' name='file_uploads'></input> -->
+					<h6>Accepted File Types: .doc, .docx, .pdf</h6>
+
+
+				</div>
 			</div>
+
 
 			<div class="col-md-7 col-lg-8">
 				<textarea class="form-control" type="textarea" name="content" placeholder="Lesson Content" rows="20" cols="20" > {{old('content')}} </textarea>
 
-				<!-- <p> placeholder for file upload</p> -->
+			
 
 				{{ method_field('POST')}}
 

@@ -29,7 +29,6 @@
                 	client.pick({
                 		accept: [".doc", ".docx", ".pdf"],
                 		maxFiles: 1,
-                		minFiles: 1,
                 		fromSources: ['local_file_system', 'googledrive', 'gmail', 'dropbox',],
                 		maxSize: 1024*1024
                 	}).then(function(result){
