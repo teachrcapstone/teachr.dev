@@ -32,7 +32,7 @@ class PostsController extends Controller
 
 				$posts = Post::with('user')
 				->orderBy('created_at','DESC')
-				->paginate(4);
+				->paginate(10);
 
 			} else {
 
@@ -41,7 +41,7 @@ class PostsController extends Controller
 				$posts = Post::search($q);
 				
 			}
-			
+
 			$data['category'] = $request->category;
 
 			$data['posts'] = $posts;

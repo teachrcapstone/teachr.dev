@@ -47,7 +47,7 @@ class Post extends Model
 
 			->where('category', 'like', "%$search%")
 			->orderBy('created_at','DESC')
-			->paginate(4);	
+			->paginate(10);	
 
         return $posts; 
 	}

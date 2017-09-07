@@ -8,11 +8,13 @@
 
 	<main class="container">
 		<div class="row">
+			<h3><a href="{{ action('PostsController@index') }}">Back to Categories</a></h3>
+
 			<h1>Viewing "{{ $category }}" Posts</h1>
 
 		 @if($posts->count() == 0)
 
-		 	<h3>Sorry, results not found.</h3>
+		 	<h3>Sorry, no results found.</h3>
 
 		 @else
 
