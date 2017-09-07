@@ -12,7 +12,12 @@
 		<p>Created: {{$plan->created_at}}</p>
 		<p>Updated: {{$plan->updated_at}}</p>
 		
-		<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}">Download Lesson Plan</button>
+
+		@if(isset($plan->file_uploads))
+		<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}">Download Lesson Plan</a>
+		<br>
+		@endif  
+
 		
 		<!-- <a href="/ViewerJS/#../path/to/filename.ext">yee</a> -->
 
