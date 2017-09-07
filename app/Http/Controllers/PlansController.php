@@ -89,7 +89,11 @@ class PlansController extends Controller
     public function edit($id)
     {
         //
-        return view('plans.edit');
+        $plan = Plan::findOrFail($id);
+
+        $data['plan'] = $plan;
+
+        return view('plans.edit', $data);
     }
 
     /**
