@@ -10,34 +10,73 @@
 @section('content')
 
 	<main class="container">
-		<div class="row">
-			<h1>Posts Categories</h1>
+		<h1>Posts Categories</h1>
 
 
 			<form class="navbar-form" action="{{ action('PostsController@index') }}">
 
-				<button type="submit" name="category" value="all">View All</button>
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="all">View All</button>	
+					</div>
+				</div>
 
-				<button type="submit" name="category" value="general">General</button>
+				<br>
 
-				<button type="submit" name="category" value="elementary">Elementary School (K-5)</button>
+				<div class="row">
+					<div class="col-xs-6 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="general">General</button>
+						
+					</div>
+					
+					<div class="col-xs-6 text-center">
+						
+						<button class="btn btn-default" type="submit" name="category" value="5">Technology</button>
+					</div>
+				</div>
 
-				<button type="submit" name="category" value="3">Middle School (6-8)</button>
+				<br>
 
-				<button type="submit" name="category" value="4">High School (9-12)</button>
+				<div class="row">
 
-				<button type="submit" name="category" value="5">Technology in the Classroom</button>
+					<div class="col-xs-6 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="elementary">Elementary School (K-5)</button>		
+					</div>
+						
+					<div class="col-xs-6 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="6">Classroom Management </button>	
+					</div>
+				</div>
 
-				<button type="submit" name="category" value="6">High School </button>
+				<br>
 
-				<button type="submit" name="category" value="7">Administration</button>
+				<div class="row">
 
-				<button type="submit" name="category" value="8">Other</button>
+					<div class="col-xs-6 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="3">Middle School (6-8)</button>
+					</div>
 
+					<div class="col-xs-6 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="7">Administration</button>		
+					</div>
+					
+				</div>
+
+				<br>
+
+				<div class="row">
+					<div class="col-xs-6 text-center">
+						<button class="btn btn-default" type="submit" name="category" value="4">High School (9-12)</button>	
+					</div>
+
+					<div class="col-xs-6 text-center">	
+						<button class="btn btn-default" type="submit" name="category" value="8">Other</button>
+					</div>
+					
+				</div>
 
 			</form>
 
-		</div>
 	</main>
 @stop
 
