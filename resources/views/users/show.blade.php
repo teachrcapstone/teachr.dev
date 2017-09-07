@@ -15,8 +15,8 @@
 				<img src="https://cdn.filestackcontent.com/{{$user->image}}">
 				<h4>  {{ $user->name }}</h4>		
 				<p>Email: {{$user->email}}</p>
-				<p>Created At: {{$user->created_at }}</p>
-				<p>Updated At: {{$user->updated_at }}</p>
+				<p>User Since: {{$user->created_at }}</p>
+				<!-- <p>Updated At: {{$user->updated_at }}</p> -->
 
 				@if($user->id == Auth::id())
 				<div class="form-group">
@@ -30,7 +30,7 @@
 				<h2>{{ $user->name}}'s Lessons</h2>
 				@foreach($userPlans as $plan)
 					<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
-					<p>Created At: {{$plan->created_at}}</p>
+					<p>Created: {{$plan->created_at}}</p>
 					<hr>
 				@endforeach
 
@@ -39,7 +39,7 @@
 				<h2>My Posts</h2>
 				@foreach($userPosts as $posts)
 					<a href="{{action('PostsController@show', $posts->id)}}"><h3>{{$posts->title}}</h3></a>
-					<p>Created At: {{$posts->created_at}}</p>
+					<p>Created: {{$posts->created_at}}</p>
 
 					<hr>
 				@endforeach

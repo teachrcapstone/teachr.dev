@@ -206,5 +206,4 @@ class PostsController extends Controller
 
 
 
-
 }
