@@ -8,7 +8,7 @@
 
 	<main class="container">
 		<h1>Update Your Lesson Plan</h1>
-		<form method="POST" action="{{action('PlansController@update')}}">
+		<form method="POST" action="{{action('PlansController@update', $plan->id)}}">
 			{!! csrf_field() !!}
 
 			<input class="form-control" type="text" name="name" placeholder="Lesson Name..." value="{{ $plan->name }}">
@@ -50,8 +50,15 @@
 			{{ method_field('PUT')}}
 
 			<button class="btn-success btn" type="submit">Turn in Your Corrections!</button>
-
 		</form>
+		<form action="{{ action('PlansController@destroy', $plan->id) }}" method="post">
+			{!! csrf_field() !!}
+
+			<button class="btn btn-danger">Delete Plans</button>
+
+			{{ method_field('DELETE') }}
+		</form>
+
 	</main>
 
 @stop
