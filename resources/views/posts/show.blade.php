@@ -12,7 +12,9 @@
 		<p>Created: {{$post->created_at}}</p>
 		<p>Updated: {{$post->updated_at}}</p>
 
-		<a href="{{action('PostsController@edit', $post->id)}}">Edit this post</a>
+		@if(Auth::id() == $post->created_by)
+			<a href="{{action('PostsController@edit', $post->id)}}">Edit this post</a>
+		@endif
 
 	</main>
 @stop
