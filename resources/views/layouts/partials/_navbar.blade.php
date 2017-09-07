@@ -23,7 +23,9 @@
 								<li><a href="{{ action('PostsController@create') }}">Add Post</a></li>
 							</ul>
 					</li>
+				</ul>
 
+				<ul class="nav navbar-nav navbar-right">
 					<li><a href="{{ action('Auth\AuthController@getLogout') }}"">Logout</a></li>
 				</ul>
 
@@ -35,11 +37,11 @@
 			@endif 
 
 		<!-- search bar -->
-		<form method="GET" action="{{ action('PostsController@index') }}" class="navbar-form form-inline navbar-right" role="search">
+<!-- 		<form method="GET" action="{{ action('PostsController@index') }}" class="navbar-form form-inline navbar-right" role="search">
 		{{!! csrf_field() !!}}
 			<input class="form-control mr-sm-2" name="q" type="text" placeholder="Search!">
 			<button class="btn my-2 my-sm-0" type="submit">Go!</button>	
-		</form>
+		</form> -->
 	</div>
 </nav>
 
