@@ -45,7 +45,15 @@
 
 			<textarea class="form-control" type="textarea" name="content" placeholder="Lesson Content" rows="4" cols="20" > {{ $plan->content }} </textarea>
 
-			<!-- <p> placeholder for file upload</p> -->
+			<div class="form-group">
+				<br>
+				<input type="BUTTON"  class="btn" value="Update Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
+					<input id="uploadedLesson" type='hidden' value='{{old("file_uploads")}}' name='file_uploads'></input>
+				<h6>Accepted File Types: .doc, .docx, .pdf</h6>
+
+
+			</div>
+
 
 			{{ method_field('PUT')}}
 
