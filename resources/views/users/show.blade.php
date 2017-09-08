@@ -43,7 +43,10 @@
 					<hr>
 				@endforeach
 
-				<a href="#" class="btn btn-info" role="button">View All Lesson Plans</a>
+				<a href="#" class="btn btn-info" role="button">My Lesson Plans</a>
+				<a href="{{ action('PlansController@create') }}" class="btn btn-info" role="button">Add Lesson</a>
+
+
 
 				<h2>My Posts</h2>
 				@foreach($userPosts as $posts)
@@ -53,7 +56,8 @@
 					<hr>
 				@endforeach
 
-				<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">View All Posts</a>
+				<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">My Posts</a>
+				<a href="{{ action('PostsController@create') }}" class="btn btn-info" role="button">Add Post</a>
 
 			</div>
 			
