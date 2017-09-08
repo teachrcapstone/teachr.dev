@@ -9,7 +9,11 @@
 @section('content')
 
 	<main class="container">
-		<h1>Update Your Lesson Plan</h1>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+			<h1>Update Your Lesson Plan</h1>
+		</div>
+		<div class="panel-body">
 		<form method="POST" action="{{action('PlansController@update', $plan->id)}}">
 			{!! csrf_field() !!}
 			<div class="col-md-5 col-lg-4">
@@ -56,7 +60,7 @@
 
 
 			<div class="col-md-7 col-lg-8">
-				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20" id='wysiwyg'> {{ $plan->content }} </textarea>
+				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20" id='wysiwyg'> {{ Purifier::clean($plan->content) }} </textarea>
 
 				{{ method_field('PUT')}}
 
@@ -71,7 +75,8 @@
 
 			{{ method_field('DELETE') }}
 		</form>
-
+		</div>
+		</div>
 	</main>
 
 @stop
@@ -81,7 +86,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 		$('#wysiwyg').summernote({
-			height: 500
+			height: 500,
 			toolbar: [
 			    // [groupName, [list of button]]
 			    ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -89,8 +94,9 @@
 			    ['fontsize', ['fontsize']],
 			    ['color', ['color']],
 			    ['para', ['ul', 'ol']],
-				['insert', ['picture', 'link', 'video', 'hr']],
-				['dropdowns', ['paragraph', 'table', 'height']]
+				// ['insert', ['picture', 'link', 'video', 'hr']],
+				['dropdowns', ['paragraph', 'table', 'height']],
+				['link', ['link']]
 			  ]
 			});
 	});
