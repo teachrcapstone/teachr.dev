@@ -18,6 +18,15 @@
 				<p>Member Since: {{$user->created_at }}</p>
 				<!-- <p>Updated At: {{$user->updated_at }}</p> -->
 
+				<h3>Followers</h3>
+				<hr>
+
+				@if($user->id !== Auth::id())
+					<div class="form-group">
+						<a href="" class="btn btn-primary" role="button">Follow This User</a>
+					</div>
+				@endif
+
 				@if($user->id == Auth::id())
 				<div class="form-group">
 					<a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-info" role="button">Edit Profile</a>
@@ -35,8 +44,6 @@
 				@endforeach
 
 				<a href="#" class="btn btn-info" role="button">View All Lesson Plans</a>
-
-				<!-- for each lesson user has, dedicate a sub-section showing the basic info per post (limit 3?) -->
 
 				<h2>My Posts</h2>
 				@foreach($userPosts as $posts)
