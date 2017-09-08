@@ -68,9 +68,9 @@ class AuthController extends Controller
         ]);
     }
 
-    public function authenticated($request,$user)
+    public function authenticated($request)
     {
-        return redirect('/users/' . $user->id);
+        return redirect('/dashboard');
     }
 
 
