@@ -54,7 +54,7 @@
 
 						<div class="form-group">
 							<input type="BUTTON"  class="btn" value="Upload Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
-							<input id="uploadedLesson" type='hidden' value="" name='file_uploads'></input>
+							<input id="uploadedLesson" type='hidden' value='{{old("file_uploads")}}' name='file_uploads'></input>
 							<h6>Accepted File Types: .doc, .docx, .pdf</h6>
 
 
@@ -88,8 +88,9 @@
 			    ['fontsize', ['fontsize']],
 			    ['color', ['color']],
 			    ['para', ['ul', 'ol' ]],
-				['insert', ['picture', 'link', 'video', 'hr']],
-				['dropdowns', ['paragraph', 'table', 'height']]
+				// ['insert', ['picture', 'link', 'video', 'hr']],
+				['dropdowns', ['paragraph', 'table', 'height']],
+				['link', ['link']]
 			  ]
 			});
 	});
