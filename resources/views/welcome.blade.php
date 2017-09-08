@@ -28,14 +28,21 @@
                 <div class="col-xs-12 chalk "></div>
             </div>
             <!-- buttons are intended to be larger -->
+            @if(Auth::check())
+            @else
             <div class="row btn-group-lg">
                 <div class="col-md-6 btn">
-                    <button class="btn btn-primary">login</button>
+                    <form action="{{action('Auth\AuthController@getLogin')}}">
+                        <button class="btn btn-primary">login</button>
+                    </form>
                 </div>
                 <div class="col-md-6 btn">
-                    <button class="btn btn-primary">signup</button>
+                    <form action="{{action('Auth\AuthController@getRegister')}}">
+                        <button class="btn btn-primary">signup</button>
+                    </form>
                 </div>
             </div>
+            @endif
         </div>
             
         <div class="container">

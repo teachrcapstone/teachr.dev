@@ -147,10 +147,29 @@ class UsersController extends Controller
 	 return view('posts.userposts', $data);
 	}
 
-
 	
+	public function canFollow($id)
+    {
+        $user->toggleFollow($value);
+        return \Redirect::action("UsersController@show", $user->id);
+    }
 
+    public function dashboard()
+    {
+    	$user = User::findOrFail(Auth::id());
 
+		$userPlans = $user->plans;
+
+		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
+		
+		$data['user'] = $user;
+		$data['userPosts'] = $userPosts;
+		$data['userPlans'] = $userPlans;
+
+    	$data['user'] = $user;
+
+    	return view('users.dashboard', $data);
+    }
 
 	
 }

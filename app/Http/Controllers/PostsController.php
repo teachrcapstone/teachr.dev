@@ -127,7 +127,8 @@ class PostsController extends Controller
 	{
 		$post = Post::findOrFail($id);
 		
-		$data['post'] = $post;   
+		$data['post'] = $post;
+		// $data['slug'] = $slug;   
 
 		Log::info('Post ' . $post->id . ' was viewed');
 
@@ -174,7 +175,9 @@ class PostsController extends Controller
 		$request->session()->flash("successMessage" , "Your post was updataed successfully");
 
 
-		return \Redirect::action('PostsController@index');
+		// return \Redirect::action('PostsController@index');
+
+		return redirect()->action('PostsController@show', ['id' => $post->id]);
 	}
 
 	/**

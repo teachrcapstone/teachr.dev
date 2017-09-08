@@ -25,6 +25,7 @@ Route::resource('posts', 'PostsController');
 
 Route::resource('plans', 'PlansController');
 
+Route::get('dashboard', 'UsersController@dashboard');
 Route::get('myposts', 'UsersController@myPosts');
 Route::resource('users', 'UsersController');
 

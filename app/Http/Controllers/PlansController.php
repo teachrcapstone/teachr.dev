@@ -79,7 +79,12 @@ class PlansController extends Controller
         $plan->department = $request->department;
         $plan->grade_level = $request->grade_level;
         $plan->content = $request->content;
-        $plan->file_uploads = $request->file_uploads;
+
+
+        if (!empty($plan->file_uploads)) {
+            $plan->file_uploads = $request->file_uploads;
+        }
+
         $plan->created_by = Auth::id();
         $plan->save();
 

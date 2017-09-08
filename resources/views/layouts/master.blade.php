@@ -25,6 +25,7 @@
 	@yield('content')
 	@include('layouts.partials._filestack')
 	<!-- @include('layouts.partials._footer') -->
+	@yield('footer')
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	@yield('scripts')
