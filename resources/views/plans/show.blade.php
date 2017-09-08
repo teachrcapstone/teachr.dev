@@ -30,6 +30,7 @@
 					<p>Created: {{ $plan->created_at }} Updated: {{ $plan->updated_at }}</p>
 				</div>
 			</div>
+			<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 
 
 
@@ -38,7 +39,6 @@
 			<br>
 			@endif
 
-			<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 
 			@if(isset($plan->file_uploads))
 				<div class="col-sm-6">
