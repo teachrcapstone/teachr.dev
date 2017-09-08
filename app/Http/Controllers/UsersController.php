@@ -138,7 +138,9 @@ class UsersController extends Controller
 	public function myPosts()
 	{    
 	 	$user = User::findOrFail(Auth::id());
-		$userPosts = $user->posts;
+
+		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->paginate(10);
+
 		$data['userPosts'] = $userPosts;
 
 
@@ -146,8 +148,7 @@ class UsersController extends Controller
 	}
 
 
-
-
+	
 
 
 
