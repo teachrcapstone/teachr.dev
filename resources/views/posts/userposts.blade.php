@@ -9,6 +9,7 @@
 	<main class="container">
 		<div class="row">
 			<h3><a href="{{ action('UsersController@show', Auth::id()) }}">Back to Dashboard</a></h3>
+			<h3><a href="{{ action('PostsController@index') }}">View All Posts</a></h3>
 
 			<h2>My Posts</h2>
 				@foreach($userPosts as $post)
@@ -24,3 +25,5 @@
 		</div>
 	</main>
 @stop
+
+
