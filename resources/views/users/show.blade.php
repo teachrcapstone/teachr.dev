@@ -34,6 +34,8 @@
 					<hr>
 				@endforeach
 
+				<a href="#" class="btn btn-info" role="button">View All Lesson Plans</a>
+
 				<!-- for each lesson user has, dedicate a sub-section showing the basic info per post (limit 3?) -->
 
 				<h2>My Posts</h2>
@@ -43,6 +45,8 @@
 
 					<hr>
 				@endforeach
+
+				<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">View All Posts</a>
 
 			</div>
 			

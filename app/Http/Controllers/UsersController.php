@@ -135,15 +135,15 @@ class UsersController extends Controller
 		return \Redirect::action('/');
 	}
 
-	// public function userPosts()
-	// {    
-	//  	$user = User::findOrFail($id);
-	// 	$userPosts = $user->posts;
-	// 	$data['userPosts'] = $userPosts;
+	public function myPosts()
+	{    
+	 	$user = User::findOrFail(Auth::id());
+		$userPosts = $user->posts;
+		$data['userPosts'] = $userPosts;
 
 
-	//  return view('posts.userposts');
-	// }
+	 return view('posts.userposts', $data);
+	}
 
 
 
