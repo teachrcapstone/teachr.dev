@@ -32,8 +32,8 @@
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Account Information</a></li>
-							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
+							<li><a href="#">Account Information <i class="glyphicon glyphicon-user"></i></a></li>
+							<li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout <i class="glyphicon glyphicon-log-out"></i></a></li>
 						</ul>
 					</li>
 				</ul>
