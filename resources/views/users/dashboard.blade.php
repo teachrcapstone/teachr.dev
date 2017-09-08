@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>User Account</title>
+	<title>User Dashboard</title>
 @stop
 
 @section('content')
 	<main class="container">
-		<h2>Profile</h2>
+		<h2>My Dashboard</h2>
 
 		<br>
 
