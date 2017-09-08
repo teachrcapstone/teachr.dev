@@ -19,7 +19,8 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discussion Board <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ action('PostsController@index') }}">View Posts</a></li>
+								<li><a href="{{ action('PostsController@index') }}">View All Posts</a></li>
+								<li><a href="{{ action('UsersController@myPosts') }}">View My Posts</a></li>
 								<li><a href="{{ action('PostsController@create') }}">Add Post</a></li>
 							</ul>
 					</li>
@@ -44,6 +45,5 @@
 		</form> -->
 	</div>
 </nav>
-
 
 
