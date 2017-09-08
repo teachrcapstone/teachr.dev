@@ -127,7 +127,8 @@ class PostsController extends Controller
 	{
 		$post = Post::findOrFail($id);
 		
-		$data['post'] = $post;   
+		$data['post'] = $post;
+		// $data['slug'] = $slug;   
 
 		Log::info('Post ' . $post->id . ' was viewed');
 
