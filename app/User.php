@@ -10,6 +10,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanFavorite;
+
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -65,5 +70,10 @@ class User extends Model implements AuthenticatableContract,
     {
         $utc = \Carbon\Carbon::createFromFormat($this->getDateFormat(), $value);
         return $utc->setTimezone('America/Chicago')->toDayDateTimeString();
+    }
+
+    public function follow($value)
+    {
+        $user->toggleFollow($value);
     }
 }
