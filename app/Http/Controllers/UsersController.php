@@ -171,5 +171,10 @@ class UsersController extends Controller
     	return view('users.dashboard', $data);
     }
 
-	
+	public function mySettings()
+	{
+		$user = User::findOrFail(Auth::id());
+		$data['user'] = $user;
+		return view('users.settings', $data);
+	}
 }
