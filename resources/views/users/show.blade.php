@@ -43,7 +43,7 @@
 					<hr>
 				@endforeach
 
-				<a href="#" class="btn btn-info" role="button">View My Lesson Plans</a>
+				<a href="#" class="btn btn-info" role="button">My Lesson Plans</a>
 				<a href="{{ action('PlansController@create') }}" class="btn btn-info" role="button">Add Lesson</a>
 
 
@@ -56,7 +56,7 @@
 					<hr>
 				@endforeach
 
-				<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">View My Posts</a>
+				<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">My Posts</a>
 				<a href="{{ action('PostsController@create') }}" class="btn btn-info" role="button">Add Post</a>
 
 			</div>
