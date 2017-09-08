@@ -112,7 +112,7 @@ class UsersController extends Controller
 		$request->session()->flash("successMessage" , "Your account was updataed successfully");
 
 
-		return \Redirect::action('UsersController@show', $user->id);
+		return \Redirect::action('UsersController@dashboard');
 	}
 
 	/**

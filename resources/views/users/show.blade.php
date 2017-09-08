@@ -13,10 +13,15 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<img src="https://cdn.filestackcontent.com/{{$user->image}}">
-				<h4>  {{ $user->name }}</h4>		
+				<h2>  {{ $user->name }}</h2>		
 				<p>Email: {{$user->email}}</p>
 				<p>Member Since: {{$user->created_at }}</p>
 				<!-- <p>Updated At: {{$user->updated_at }}</p> -->
+				@if($user->id == Auth::id())
+				<div class="form-group">
+					<a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-info btn-xs" role="button">Edit Profile</a>
+				</div>
+				@endif
 
 				<h3>Followers</h3>
 				<hr>
@@ -27,11 +32,6 @@
 					</div>
 				@endif
 
-				@if($user->id == Auth::id())
-				<div class="form-group">
-					<a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-info" role="button">Edit Profile</a>
-				</div>
-				@endif
 			</div>
 
 			<div class="col-sm-6">
