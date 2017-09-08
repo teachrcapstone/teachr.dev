@@ -46,7 +46,7 @@
 
 			{!! csrf_field() !!}
 
-			<button class="btn btn-danger">Delete Post</button>
+			<button class="btn btn-danger">Delete Account</button>
 
 			{{ method_field('DELETE') }}
 			
