@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Show - User Account</title>
+	<title>User Account</title>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
 				<img src="https://cdn.filestackcontent.com/{{$user->image}}">
 				<h4>  {{ $user->name }}</h4>		
 				<p>Email: {{$user->email}}</p>
-				<p>User Since: {{$user->created_at }}</p>
+				<p>Member Since: {{$user->created_at }}</p>
 				<!-- <p>Updated At: {{$user->updated_at }}</p> -->
 
 				@if($user->id == Auth::id())

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\User as User; 
+use \App\Models\Post; 
 use Log; 
 use Auth;
 
@@ -57,8 +58,10 @@ class UsersController extends Controller
 	{
 		
 		$user = User::findOrFail($id);
-		$userPosts = $user->posts;
+
 		$userPlans = $user->plans;
+
+		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
