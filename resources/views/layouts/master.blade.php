@@ -4,7 +4,7 @@
 	@yield('title')
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
-	<script src="https://api.filestackapi.com/filestack.js"></script>
+	{{-- <script src="https://api.filestackapi.com/filestack.js"></script> --}}
 </head>
 <body>
 
@@ -28,5 +28,6 @@
 	@yield('footer')
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.js"></script>
+	@yield('scripts')
 </body>
 </html>
