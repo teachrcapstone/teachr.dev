@@ -21,11 +21,6 @@
 				<h3>Followers</h3>
 				<hr>
 
-				@if($user->id !== Auth::id())
-					<div class="form-group">
-						<a href="" class="btn btn-primary" role="button">Follow This User</a>
-					</div>
-				@endif
 
 				@if($user->id == Auth::id())
 				<div class="form-group">
@@ -36,7 +31,7 @@
 
 			<div class="col-sm-6">
 				
-				<h2>{{ $user->name}}'s Lessons</h2>
+				<h2>My Lessons</h2>
 				@foreach($userPlans as $plan)
 					<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
 					<p>Created: {{$plan->created_at}}</p>
@@ -44,13 +39,13 @@
 				@endforeach
 
 				@if($user->id == Auth::id())
-					<a href="#" class="btn btn-info" role="button">My Lesson Plans</a>
+					<a href="#" class="btn btn-info" role="button">View My Lesson Plans</a>
 					<a href="{{ action('PlansController@create') }}" class="btn btn-info" role="button">Add Lesson</a>
 				@endif
 
 
 
-				<h2>{{ $user->name}}'s Posts</h2>
+				<h2>My Posts</h2>
 				@foreach($userPosts as $posts)
 					<a href="{{action('PostsController@show', $posts->id)}}"><h3>{{$posts->title}}</h3></a>
 					<p>Created: {{$posts->created_at}}</p>
@@ -59,7 +54,7 @@
 				@endforeach
 
 				@if($user->id == Auth::id())
-					<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">My Posts</a>
+					<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">View My Posts</a>
 					<a href="{{ action('PostsController@create') }}" class="btn btn-info" role="button">Add Post</a>
 				@endif
 
