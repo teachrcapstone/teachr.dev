@@ -4,6 +4,8 @@
 	<title>Create a Lesson Plan</title>
 @stop
 
+@include('layouts.partials._summernote-style')
+
 @section('content')
 
 	<main class="container">
@@ -61,9 +63,7 @@
 
 
 					<div class="col-md-7 col-lg-8">
-						<textarea class="form-control" type="textarea" name="content" placeholder="Lesson Content" rows="20" cols="20" > {{old('content')}} </textarea>
-
-
+						<textarea class="form-control" type="textarea" name="content" placeholder="Lesson Content" rows="4" cols="20" id='wysiwyg'> {{old('content')}} </textarea>
 
 						{{ method_field('POST')}}
 
@@ -73,5 +73,25 @@
 			</div>
 		</div>
 	</main>
+@stop
+@section('scripts')
+	@include('layouts.partials._summernote-js')
 
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#wysiwyg').summernote({
+			height: 500,
+			toolbar: [
+			    // [groupName, [list of button]]
+			    ['style', ['bold', 'italic', 'underline', 'clear']],
+			    ['font', ['strikethrough', 'superscript', 'subscript']],
+			    ['fontsize', ['fontsize']],
+			    ['color', ['color']],
+			    ['para', ['ul', 'ol' ]],
+				['insert', ['picture', 'link', 'video', 'hr']],
+				['dropdowns', ['paragraph', 'table', 'height']]
+			  ]
+			});
+	});
+	</script>
 @stop
