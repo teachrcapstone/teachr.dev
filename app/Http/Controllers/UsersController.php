@@ -147,9 +147,12 @@ class UsersController extends Controller
 	 return view('posts.userposts', $data);
 	}
 
-
 	
-
+	public function canFollow($id)
+    {
+        $user->toggleFollow($value);
+        return \Redirect::action("UsersController@show", $user->id);
+    }
 
 
 	
