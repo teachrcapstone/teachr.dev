@@ -72,8 +72,5 @@ class User extends Model implements AuthenticatableContract,
         return $utc->setTimezone('America/Chicago')->toDayDateTimeString();
     }
 
-    public function follow($value)
-    {
-        $user->toggleFollow($value);
-    }
+    
 }
