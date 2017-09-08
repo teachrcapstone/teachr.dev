@@ -18,3 +18,7 @@
 
 	</main>
 @stop
+
+@section('footer')
+		@include('layouts.partials._disqus')
+@stop
