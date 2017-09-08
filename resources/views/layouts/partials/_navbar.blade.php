@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container container-fluid">
-		<div class="navbar-header">
-			<a href="/"><i class="glyphicon glyphicon-apple navbar-brand">Teachr</i></a>
+		<div class="navbar-header navbar-brand">
+			<i class="glyphicon glyphicon-apple"></i>Teachr
 		</div>
 
 			@if(Auth::check())
@@ -35,15 +35,13 @@
 					<li><a href="{{ action('Auth\AuthController@getLogin')}}">Login <i class="glyphicon glyphicon-log-in"></i></a></li>
 					<li><a href="{{ action('Auth\AuthController@getRegister')}}">Register <i class="glyphicon glyphicon-log-in"></i></a></li>
 				</ul>
-			@endif 
+			@endif
 
 		<!-- search bar -->
 <!-- 		<form method="GET" action="{{ action('PostsController@index') }}" class="navbar-form form-inline navbar-right" role="search">
 		{{!! csrf_field() !!}}
 			<input class="form-control mr-sm-2" name="q" type="text" placeholder="Search!">
-			<button class="btn my-2 my-sm-0" type="submit">Go!</button>	
+			<button class="btn my-2 my-sm-0" type="submit">Go!</button>
 		</form> -->
 	</div>
 </nav>
-
-
