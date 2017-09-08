@@ -52,4 +52,16 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Models\Plan', 'created_by');
     }
+    
+    public function getCreatedAtAttribute($value)
+    {
+        $utc = \Carbon\Carbon::createFromFormat($this->getDateFormat(), $value);
+        return $utc->setTimezone('America/Chicago')->toDayDateTimeString();
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        $utc = \Carbon\Carbon::createFromFormat($this->getDateFormat(), $value);
+        return $utc->setTimezone('America/Chicago')->toDayDateTimeString();
+    }
 }

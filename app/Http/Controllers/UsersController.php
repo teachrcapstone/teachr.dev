@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\User as User; 
+use \App\Models\Post; 
 use Log; 
 use Auth;
 
@@ -57,8 +58,10 @@ class UsersController extends Controller
 	{
 		
 		$user = User::findOrFail($id);
-		$userPosts = $user->posts;
+
 		$userPlans = $user->plans;
+
+		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
@@ -132,19 +135,20 @@ class UsersController extends Controller
 		return \Redirect::action('/');
 	}
 
-	// public function userPosts()
-	// {    
-	//  	$user = User::findOrFail($id);
-	// 	$userPosts = $user->posts;
-	// 	$data['userPosts'] = $userPosts;
+	public function myPosts()
+	{    
+	 	$user = User::findOrFail(Auth::id());
+
+		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->paginate(10);
+
+		$data['userPosts'] = $userPosts;
 
 
-	//  return view('posts.userposts');
-	// }
+	 return view('posts.userposts', $data);
+	}
 
 
-
-
+	
 
 
 
