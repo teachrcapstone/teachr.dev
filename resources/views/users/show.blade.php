@@ -28,7 +28,7 @@
 
 				@if($user->id !== Auth::id())
 					<div class="form-group">
-						<a href="" class="btn btn-primary" role="button">Follow This User</a>
+						<a href="{{action('UsersController@follow', $user->id)}}" class="btn btn-primary" role="button">Follow This User</a>
 					</div>
 				@endif
 
