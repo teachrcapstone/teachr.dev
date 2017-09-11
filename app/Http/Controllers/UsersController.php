@@ -147,12 +147,6 @@ class UsersController extends Controller
 	 return view('posts.userposts', $data);
 	}
 
-	
-	public function canFollow($id)
-    {
-        $user->toggleFollow($value);
-        return \Redirect::action("UsersController@show", $user->id);
-    }
 
     public function dashboard()
     {
@@ -177,4 +171,13 @@ class UsersController extends Controller
 		$data['user'] = $user;
 		return view('users.settings', $data);
 	}
+
+	//social methods
+	public function follow($id)
+    {
+    	$user = User::findOrFail(Auth::id());
+
+        $user->follow(User::find($id));
+        return \Redirect::action("UsersController@show", $user->id);
+    }
 }
