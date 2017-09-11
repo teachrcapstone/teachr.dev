@@ -37,7 +37,11 @@
                 		var handle = result.filesUploaded[0].handle;
                 		console.log(handle);
 
+                        $('input[name=file_uploads]').val(handle);
 
+                        $("#filestackConfirm").after(function(){
+                        return "<p>Document successfully uploaded!</p>";
+                });
 
                 	});
                 }

@@ -32,15 +32,13 @@
 			</div>
 			<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 
-
-
-			@if(isset($plan->file_uploads))
+			@if(!empty($plan->file_uploads))
 			<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
 			<br>
 			@endif
 
 
-			@if(isset($plan->file_uploads))
+			@if(!empty($plan->file_uploads))
 				<div class="col-sm-6">
 					<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='389' height='550' class="embed-responsive-item" allowfullscreen></iframe>
 
