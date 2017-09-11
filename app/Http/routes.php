@@ -25,6 +25,9 @@ Route::resource('posts', 'PostsController');
 
 Route::resource('plans', 'PlansController');
 
+//Social functionality routes...
+Route::get('follow/{id}', 'UsersController@follow');
+
 Route::get('dashboard', 'UsersController@dashboard');
 Route::get('myposts', 'UsersController@myPosts');
 Route::resource('users', 'UsersController');
@@ -45,6 +48,3 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-//Social functionality routes...
-Route::get('follow', 'UsersController@follow');
