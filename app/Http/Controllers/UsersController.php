@@ -67,6 +67,7 @@ class UsersController extends Controller
 		// $followers = $user->followings()->get();
 		// $followers = $user->followings()->get();
 		$followers = $user->followers;
+		$followings = $user->followings()->get();
 
 
 
@@ -78,6 +79,7 @@ class UsersController extends Controller
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
 		$data['followers'] = $followers;
+		$data['followings'] = $followings;
 
 		Log::info('User account ' . $user->id . ' was viewed');
 
@@ -167,12 +169,18 @@ class UsersController extends Controller
 		$userPlans = $user->plans;
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
+
+		$followers = $user->followers;
+		$followings = $user->followings()->get();
+
+
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
+		$data['followers']=$followers;
+		$data['followings']= $followings;
 
-    	$data['user'] = $user;
 
     	return view('users.dashboard', $data);
     }
