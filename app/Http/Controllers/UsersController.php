@@ -62,10 +62,22 @@ class UsersController extends Controller
 		$userPlans = $user->plans;
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
+
+		// $followers = $user->followers;
+		// $followers = $user->followings()->get();
+		// $followers = $user->followings()->get();
+		$followers = $user->followers;
+
+
+
+
+
+
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
+		$data['followers'] = $followers;
 
 		Log::info('User account ' . $user->id . ' was viewed');
 

@@ -24,6 +24,9 @@
 				@endif
 
 				<h3>Followers</h3>
+					@foreach($followers as $follower)
+						<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
+					@endforeach
 				<hr>
 
 				@if($user->id !== Auth::id())
