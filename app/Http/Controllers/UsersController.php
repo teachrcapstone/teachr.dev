@@ -175,9 +175,15 @@ class UsersController extends Controller
 	//social methods
 	public function follow($id)
     {
-    	$user = User::findOrFail(Auth::id());
+    	$followedUser = User::findOrFail($id);
 
-        $user->follow(User::find($id));
-        return \Redirect::action("UsersController@show", $user->id);
+    	$currentUser = User::findOrFail(Auth::id());
+        $currentUser->follow($followedUser);
+
+
+    	session()->flash('successMessage', 'You have successfully followed this user!');
+
+        return \Redirect::action('UsersController@show', $followedUser->id);
+
     }
 }
