@@ -6,7 +6,7 @@
 
 @section('content')
 	<main class="container">
-		<div class="col-sm-6">
+		<div class="col-sm-4">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h1>{{ $plan->name }}</h1>
@@ -32,8 +32,6 @@
 			</div>
 			<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 
-
-
 			@if(isset($plan->file_uploads))
 			<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
 			<br>
@@ -41,13 +39,13 @@
 
 
 			@if(isset($plan->file_uploads))
-				<div class="col-sm-6">
+				<div class="col-sm-4">
 					<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='389' height='550' class="embed-responsive-item" allowfullscreen></iframe>
 
 				</div>
 			@endif
 		</div>
-		<div class="col-sm-6">
+		<div class="col-sm-8">
 			<div class="panel panel-info">
 				<div class="panel-body">
 					<p>{!! Purifier::clean($plan->content) !!}</p>
