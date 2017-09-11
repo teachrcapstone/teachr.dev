@@ -51,7 +51,7 @@
 				<div class="form-group">
 					<br>
 					<input type="BUTTON"  class="btn" value="Update Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
-					<input id="uploadedLesson" type='hidden' value='{{$plan->file_uploads}}' name='file_uploads'></input>
+					<input id="uploadedLesson" type='text' value='{{$plan->file_uploads}}' name='file_uploads'></input>
 					<h6>Accepted File Types: .doc, .docx, .pdf</h6>
 
 
