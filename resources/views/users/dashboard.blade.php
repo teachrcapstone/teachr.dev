@@ -28,6 +28,11 @@
 					@endforeach
 				<hr>
 
+				<h3>Following</h3>
+				@foreach($followings as $following)
+					<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
+				@endforeach
+
 
 			</div>
 

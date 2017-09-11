@@ -24,20 +24,24 @@
 				@endif
 
 				<h3>Followers</h3>
-					@foreach($followers as $follower)
-						<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
-					@endforeach
+				@if($user->id !== Auth::id())
+					<div class="form-group">
+						<a href="{{ action('UsersController@follow', $user->id) }}" class="btn btn-primary btn-xs" role="button">Follow This User</a>
+					</div>
+				@endif
+				
+				@foreach($followers as $follower)
+					<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
+				@endforeach
+
 				<hr>
 
 				<h3>Following</h3>
 					@foreach($followings as $following)
 						<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
 					@endforeach
-				@if($user->id !== Auth::id())
-					<div class="form-group">
-						<a href="{{ action('UsersController@follow', $user->id) }}" class="btn btn-primary" role="button">Follow This User</a>
-					</div>
-				@endif
+
+
 
 			</div>
 
