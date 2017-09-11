@@ -123,7 +123,7 @@
 				<p> {{ $plan->objective }} </p>
 				<p> {{ $plan->department }} </p>
 				<p> {{ $plan->grade_level }} </p>
-				<p> {{ $plan->content }} </p>
+				<p> {!! Purifier::clean($plan->content) !!} </p>
 				<p> {{ $plan->file_uploads }} </p>
 				<p> {{ $plan->created_by }} </p>
 			@endforeach
