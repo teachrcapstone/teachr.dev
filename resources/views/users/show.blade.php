@@ -29,6 +29,10 @@
 					@endforeach
 				<hr>
 
+				<h3>Following</h3>
+					@foreach($followings as $following)
+						<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
+					@endforeach
 				@if($user->id !== Auth::id())
 					<div class="form-group">
 						<a href="{{ action('UsersController@follow', $user->id) }}" class="btn btn-primary" role="button">Follow This User</a>
