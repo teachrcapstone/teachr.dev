@@ -23,7 +23,15 @@
 
 
 				<h3>Followers</h3>
+					@foreach($followers as $follower)
+						<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
+					@endforeach
 				<hr>
+
+				<h3>Following</h3>
+				@foreach($followings as $following)
+					<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
+				@endforeach
 
 
 			</div>
