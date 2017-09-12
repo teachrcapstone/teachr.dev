@@ -14,6 +14,8 @@
 
 		<h1>Edit Account</h1>
 
+		<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}" id="editIcon">
+
 		<form action="{{ action('UsersController@update' , $user->id) }}" method="POST">
 
 			{!! csrf_field() !!}
