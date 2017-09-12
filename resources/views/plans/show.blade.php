@@ -42,9 +42,9 @@
 
 
 			@if(!empty($plan->file_uploads))
-				<div class="col-sm-6">
+				<div>
 
-					<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='389' height='550' class="embed-responsive-item" allowfullscreen></iframe>
+					<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='100%' height='550' class="embed-responsive-item" allowfullscreen></iframe>
 
 				</div>
 			@endif

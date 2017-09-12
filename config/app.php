@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Overtrue\LaravelFollow\FollowServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
+        Royalmar\HtmlDomParser\HtmlDomParserServiceProvider::class,
 
     ],
 
@@ -195,6 +196,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'HtmlDomParser' => Royalmar\HtmlDomParser\HtmlDomParser::class,
 
     ],
 
