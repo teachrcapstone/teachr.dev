@@ -11,6 +11,8 @@ use App\Models\Plan as Plan;
 // use App\
 use Auth;
 use DB;
+use HtmlDomParser;
+
 
 class PlansController extends Controller
 {
@@ -78,9 +80,23 @@ class PlansController extends Controller
         $plan->objective = $request->objective;
         $plan->department = $request->department;
         $plan->grade_level = $request->grade_level;
-        $plan->content = $request->content;
+
+        if (!empty($request->file_uploads)){
+            //$plan->content = $request->content;
+            $parser = new \HtmlDomParser();
+            // get html dom from file
+            $html = $parser->fileGetHtml('https://process.filestackapi.com/A4e3fBA8JTkOq2h4hG7NDz/output=f:html/' . $request->file_uploads);
+            // $html = HtmlDomParser::fileGetHtml('https://process.filestackapi.com/A4e3fBA8JTkOq2h4hG7NDz/output=f:html/' . $request->file_uploads);
+            $plan->content = $html->find('body', 0)->innertext;
+            //echo $e->innertext;
+            //dd($html);
+            //$plan->content = ;
+        } else {
+            $plan->content = $request->content;
+        }
+
         $plan->file_uploads = $request->file_uploads;
-        
+
         $plan->created_by = Auth::id();
         $plan->save();
 
