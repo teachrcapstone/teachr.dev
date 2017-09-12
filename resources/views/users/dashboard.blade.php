@@ -12,7 +12,7 @@
 
 		<div class="row">
 			<div class="col-sm-6">
-				<img src="https://cdn.filestackcontent.com/{{$user->image}}">
+				<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
 				<h4>  {{ $user->name }}</h4>		
 
 				@if($user->id == Auth::id())
