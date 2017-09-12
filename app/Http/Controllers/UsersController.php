@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\User as User; 
 use \App\Models\Post; 
+use \App\Models\Plan; 
+
 use Log; 
 use Auth;
 
@@ -62,10 +64,24 @@ class UsersController extends Controller
 		$userPlans = $user->plans;
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
+
+		// $followers = $user->followers;
+		// $followers = $user->followings()->get();
+		// $followers = $user->followings()->get();
+		$followers = $user->followers;
+		$followings = $user->followings()->get();
+
+
+
+
+
+
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
+		$data['followers'] = $followers;
+		$data['followings'] = $followings;
 
 		Log::info('User account ' . $user->id . ' was viewed');
 
@@ -155,12 +171,25 @@ class UsersController extends Controller
 		$userPlans = $user->plans;
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
+
+		$followers = $user->followers;
+		$followings = $user->followings()->get();
+
+
+		$userIds = $user->followings()->lists('followable_id')->toArray();
+		// $userIds[] = $user->id;
+
+		$followingsPosts = Post::whereIn('created_by', $userIds)->orderBy('created_at','DESC')->limit(5)->get();
+
+
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
+		$data['followers']=$followers;
+		$data['followings']= $followings;
+		$data['followingsPosts'] = $followingsPosts;
 
-    	$data['user'] = $user;
 
     	return view('users.dashboard', $data);
     }
@@ -175,9 +204,15 @@ class UsersController extends Controller
 	//social methods
 	public function follow($id)
     {
-    	$user = User::findOrFail(Auth::id());
+    	$followedUser = User::findOrFail($id);
 
-        $user->follow(User::find($id));
-        return \Redirect::action("UsersController@show", $user->id);
+    	$currentUser = User::findOrFail(Auth::id());
+        $currentUser->follow($followedUser);
+
+
+    	session()->flash('successMessage', 'You have successfully followed this user!');
+
+        return \Redirect::action('UsersController@show', $followedUser->id);
+
     }
 }
