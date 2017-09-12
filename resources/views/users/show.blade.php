@@ -24,22 +24,78 @@
 				@endif
 
 				<h3>Followers</h3>
+
 				@if($user->id !== Auth::id())
 					<div class="form-group">
 						<a href="{{ action('UsersController@follow', $user->id) }}" class="btn btn-primary btn-xs" role="button">Follow This User</a>
 					</div>
 				@endif
 				
-				@foreach($followers as $follower)
+<!-- 				@foreach($followers as $follower)
 					<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
-				@endforeach
+				@endforeach -->
+
+
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#followerModal">{{ $followers->count()}} Followers</button>
+
+				<!-- Modal -->
+				<div id="followerModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Followers</h4>
+							</div>
+
+							<div class="modal-body">
+								@foreach($followers as $follower)
+									<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
+								@endforeach
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 
 				<hr>
-
+<!-- 
 				<h3>Following</h3>
 					@foreach($followings as $following)
 						<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
-					@endforeach
+					@endforeach -->
+
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#followingModal">{{ $followings->count()}} Following</button>
+
+				<!-- Modal -->
+				<div id="followingModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Following</h4>
+							</div>
+
+							<div class="modal-body">
+								@foreach($followings as $following)
+									<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
+								@endforeach
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 
