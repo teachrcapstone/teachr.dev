@@ -14,6 +14,8 @@
 				{{-- @if ($request->department) --}}
 				<form class="" action="{{ action('PlansController@index') }}" method="get">
 
+					{{-- <input type="text" name="search" placeholder="Search" method='GET'> --}}
+
 					<li class=''>Department
 						<ul>
 							<li>
@@ -118,14 +120,24 @@
 		</nav>
 		<div class="col-md-8 col-lg-9">
 			@foreach ($plans as $plan)
-				<p> {{ $plan->name }} </p>
-				<p> {{ $plan->tek }} </p>
-				<p> {{ $plan->objective }} </p>
-				<p> {{ $plan->department }} </p>
-				<p> {{ $plan->grade_level }} </p>
-				<p> {!! Purifier::clean($plan->content) !!} </p>
-				<p> {{ $plan->file_uploads }} </p>
-				<p> {{ $plan->created_by }} </p>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<span class='h4'> {{ $plan->name }} </span>
+						<span class='h6'> by {{ $plan->user->name }} </span>
+
+					</div>
+					<div class="panel-body">
+						<p> <span class='h4'>Objective: </span> {{ $plan->objective }} </p>
+						<blockquote>
+							<p> {!! Purifier::clean($plan->content) !!} </p>
+						</blockquote>
+					</div>
+					<div class="panel-footer">
+						<p> {{ $plan->department }} </p>
+						<p> {{ $plan->tek }} </p>
+						<p> {{ $plan->grade_level }} </p>
+					</div>
+				</div>
 			@endforeach
 		</div>
 	</main>

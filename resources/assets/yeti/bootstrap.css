@@ -7070,6 +7070,7 @@ input[type="checkbox"] {
 }
 body {
   margin-top: 49px;
+  margin-bottom: 49px;
 }
 .navbar .container,
 .navbar .container-fluid {

@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PlansController;
+
+use App\User as User;
 use App\Models\Plan as Plan;
 // use App\
 use Auth;
 use DB;
+use HtmlDomParser;
+
 
 class PlansController extends Controller
 {
@@ -35,7 +39,13 @@ class PlansController extends Controller
             // dd($plans);
 
             foreach($search as $key => $value){
-                $plans->where($key, 'like', $value);
+                if ($key == "search" && !empty($value)){
+                    $plans->where('content', 'like', '%'. $value . '%')
+                          ->orWhere('name', 'like', '%' . $value . "%")
+                          ->orWhere('objective', 'like', '%' . $value . '%');
+                } elseif ($key != 'search'){
+                    $plans->where($key, 'like', $value);
+                }
             }
 
             // dd($plans);
@@ -78,9 +88,23 @@ class PlansController extends Controller
         $plan->objective = $request->objective;
         $plan->department = $request->department;
         $plan->grade_level = $request->grade_level;
-        $plan->content = $request->content;
+
+        if (!empty($request->file_uploads)){
+            //$plan->content = $request->content;
+            $parser = new \HtmlDomParser();
+            // get html dom from file
+            $html = $parser->fileGetHtml('https://process.filestackapi.com/A4e3fBA8JTkOq2h4hG7NDz/output=f:html/' . $request->file_uploads);
+            // $html = HtmlDomParser::fileGetHtml('https://process.filestackapi.com/A4e3fBA8JTkOq2h4hG7NDz/output=f:html/' . $request->file_uploads);
+            $plan->content = $html->find('body', 0)->innertext;
+            //echo $e->innertext;
+            //dd($html);
+            //$plan->content = ;
+        } else {
+            $plan->content = $request->content;
+        }
+
         $plan->file_uploads = $request->file_uploads;
-        
+
         $plan->created_by = Auth::id();
         $plan->save();
 
@@ -164,5 +188,26 @@ class PlansController extends Controller
         $request->session()->flash("successMessage" , "Your plan was successfully deleted");
 
         return \Redirect::action('UsersController@show', Auth::id());
+    }
+
+    //social methods
+    public function like($id)
+    {
+        $liked = Plan::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+
+        $user->like($liked);
+        session()->flash('successMessage', 'Plan Liked.');
+        return \Redirect::action('PlansController@show', $liked->id);
+    }
+
+    public function unlike($id)
+    {
+        $unliked = Plan::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+
+        $user->unlike($unliked);
+        session()->flash('successMessage', 'Plan Unliked.');
+        return \Redirect::action("PlansController@show", $unliked->id);
     }
 }

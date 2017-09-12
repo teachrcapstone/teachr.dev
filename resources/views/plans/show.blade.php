@@ -38,6 +38,18 @@
 			<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
 			<br>
 			@endif
+			
+
+			@if(Auth::user()->hasLiked($plan))
+				<div class="form-control">
+					<a href="{{ action('PlansController@unlike', $plan->id )}}" class="btn btn-primary btn-xs">Unlike This Post</a>
+				</div>
+			@else
+				<div class="form-control">
+					<a href="{{ action('PlansController@like', $plan->id )}}" class="btn btn-primary btn-xs">Like This Post</a>
+				</div>
+			@endif
+
 
 
 
