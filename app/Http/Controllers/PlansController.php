@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PlansController;
+
+use App\User as User;
 use App\Models\Plan as Plan;
 // use App\
 use Auth;
@@ -186,5 +188,26 @@ class PlansController extends Controller
         $request->session()->flash("successMessage" , "Your plan was successfully deleted");
 
         return \Redirect::action('UsersController@show', Auth::id());
+    }
+
+    //social methods
+    public function like($id)
+    {
+        $liked = Plan::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+
+        $user->like($liked);
+        session()->flash('successMessage', 'Plan Liked.');
+        return \Redirect::action('PlansController@show', $liked->id);
+    }
+
+    public function unlike($id)
+    {
+        $unliked = Plan::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+
+        $user->unlike($unliked);
+        session()->flash('successMessage', 'Plan Unliked.');
+        return \Redirect::action("PlansController@show", $unliked->id);
     }
 }
