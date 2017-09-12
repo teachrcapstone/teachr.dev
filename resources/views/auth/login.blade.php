@@ -36,6 +36,9 @@
 			<div>
 				<button class="btn btn-success"  type="submit">Login</button>
 			</div>
+			<div>
+				<a href="/password/email">Forgot Password</a>
+			</div>
 		</form>	
 	</main>
 @stop
