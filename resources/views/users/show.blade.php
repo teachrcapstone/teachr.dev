@@ -38,19 +38,12 @@
 					@endif
 
 				@endif
-				
-<!-- 				@foreach($followers as $follower)
-					<a href="{{ action('UsersController@show', $follower->id) }}"><h4>{{ $follower->name }}</h4></a>
-				@endforeach -->
-
-
+		
 				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#followerModal">{{ $followers->count()}} Followers</button>
 
-				<!-- Modal -->
 				<div id="followerModal" class="modal fade" role="dialog">
 					<div class="modal-dialog">
 
-						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -72,20 +65,12 @@
 
 
 				<hr>
-<!-- 
-				<h3>Following</h3>
-					@foreach($followings as $following)
-						<a href="{{ action('UsersController@show', $following->id) }}"><h4>{{ $following->name }}</h4></a>
-					@endforeach -->
 
-				<!-- Trigger the modal with a button -->
 				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#followingModal">{{ $followings->count()}} Following</button>
 
-				<!-- Modal -->
 				<div id="followingModal" class="modal fade" role="dialog">
 					<div class="modal-dialog">
 
-						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
