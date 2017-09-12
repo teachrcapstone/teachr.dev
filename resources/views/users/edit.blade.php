@@ -12,17 +12,25 @@
 	<main class="container">
 
 
-		<h1>Edit Account</h1>
+		<h1>Edit Your Account</h1>
 
-		<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}" id="editIcon">
 
 		<form action="{{ action('UsersController@update' , $user->id) }}" method="POST">
 
 			{!! csrf_field() !!}
 
-			<div class="form-group">
-	
-				<input type="BUTTON"  class="btn" value="update icon..." id="updateIcon filestackConfirm" onclick="updateIcon()">
+			<div class="row">
+				<div class="text-center col-centered">
+					<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}" id="editIcon">
+
+					<div class="container"></div>
+					<div class="form-group">
+			
+						<input type="BUTTON"  class="btn" value="update icon..." id="updateIcon filestackConfirm" onclick="updateIcon()">
+					</div>
+					
+				</div>
+				
 			</div>
 
 			<div class="form-group">
