@@ -40,15 +40,17 @@
 			@endif
 			
 
-
-
-				@if(Auth::user()->hasLiked($plan->id))
-			<div class="form-control">
+			@if(Auth::user()->hasLiked($plan))
+				<div class="form-control">
 					<a href="{{ action('PlansController@unlike', $plan->id )}}" class="btn btn-primary btn-xs">Unlike This Post</a>
-				@else
+				</div>
+			@else
+				<div class="form-control">
 					<a href="{{ action('PlansController@like', $plan->id )}}" class="btn btn-primary btn-xs">Like This Post</a>
-				@endif
-			</div>
+				</div>
+			@endif
+
+
 
 
 			@if(!empty($plan->file_uploads))
