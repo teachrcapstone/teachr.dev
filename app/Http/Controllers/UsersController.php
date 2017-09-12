@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use \App\User as User; 
 use \App\Models\Post; 
+use \App\Models\Plan; 
+
 use Log; 
 use Auth;
 
@@ -174,12 +176,19 @@ class UsersController extends Controller
 		$followings = $user->followings()->get();
 
 
+		$userIds = $user->followings()->lists('followable_id')->toArray();
+		// $userIds[] = $user->id;
+
+		$followingsPosts = Post::whereIn('created_by', $userIds)->orderBy('created_at','DESC')->limit(5)->get();
+
+
 		
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
 		$data['followers']=$followers;
 		$data['followings']= $followings;
+		$data['followingsPosts'] = $followingsPosts;
 
 
     	return view('users.dashboard', $data);
