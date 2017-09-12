@@ -26,9 +26,17 @@
 				<h3>Followers</h3>
 
 				@if($user->id !== Auth::id())
-					<div class="form-group">
-						<a href="{{ action('UsersController@follow', $user->id) }}" class="btn btn-primary btn-xs" role="button">Follow This User</a>
-					</div>
+
+					@if(Auth::user()->isFollowing($user->id))
+						<div class="form-group">
+							<a href="{{ action('UsersController@unfollow', $user->id) }}" class="btn btn-primary btn-xs" role="button">Unfollow</a>
+						</div>
+					@else
+						<div class="form-group">
+							<a href="{{ action('UsersController@follow', $user->id) }}" class="btn btn-primary btn-xs" role="button">Follow</a>
+						</div>
+					@endif
+
 				@endif
 				
 <!-- 				@foreach($followers as $follower)
