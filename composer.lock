@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6c630ba104b95055b98a40ee0ecc16e3",
+    "content-hash": "bc4a8c1020f3de7a68c99bf875398f77",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1135,6 +1135,39 @@
                 "shell"
             ],
             "time": "2016-03-09T05:03:14+00:00"
+        },
+        {
+            "name": "royalmar/simple-html-dom-parser",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ZiJie-Li/HtmlDomParser.git",
+                "reference": "890804bc251180864a1566d29f7a4668b3b1c585"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ZiJie-Li/HtmlDomParser/zipball/890804bc251180864a1566d29f7a4668b3b1c585",
+                "reference": "890804bc251180864a1566d29f7a4668b3b1c585",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Royalmar\\HtmlDomParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "royalmar",
+                    "email": "royal-mar@hotmail.com"
+                }
+            ],
+            "description": "modify SimpleHtmlDom for laravel",
+            "time": "2017-05-06T01:29:03+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
