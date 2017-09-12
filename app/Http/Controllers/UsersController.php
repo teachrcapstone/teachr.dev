@@ -215,4 +215,28 @@ class UsersController extends Controller
         return \Redirect::action('UsersController@show', $followedUser->id);
 
     }
+
+
+
+	public function unfollow($id)
+    {
+    	$followedUser = User::findOrFail($id);
+
+    	$currentUser = User::findOrFail(Auth::id());
+        $currentUser->unfollow($followedUser);
+
+
+    	session()->flash('successMessage', 'You have successfully unfollowed this user!');
+
+        return \Redirect::action('UsersController@show', $followedUser->id);
+
+    }
+
+
+
+
+
+
+
+
 }
