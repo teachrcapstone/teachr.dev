@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "overtrue/laravel-follow": "^1.1",
         "thomaspark/bootswatch": "^3.3",
-        "mews/purifier": "^2.0"
+        "mews/purifier": "^2.0",
+        "royalmar/simple-html-dom-parser": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
