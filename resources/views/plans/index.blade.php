@@ -14,7 +14,7 @@
 				{{-- @if ($request->department) --}}
 				<form class="" action="{{ action('PlansController@index') }}" method="get">
 
-					{{-- <input type="text" name="search" placeholder="Search" method='GET'> --}}
+					<input type="text" name="search" placeholder="Search" method='GET'>
 
 					<li class=''>Department
 						<ul>
