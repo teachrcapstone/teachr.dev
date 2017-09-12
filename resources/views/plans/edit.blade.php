@@ -55,8 +55,19 @@
 					<h6>Accepted File Types: .doc, .docx, .pdf</h6>
 				</div>
 
+				@if(!empty($plan->file_uploads))
+					<div>
 
-				</div>
+						<iframe src="https://process.filestackapi.com/output=f:pptx/{{$plan->file_uploads}}" width='100%' height='auto' class="embed-responsive-item" allowfullscreen></iframe>
+
+					</div>
+				@endif
+					<div>
+
+						<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='100%' height='550' class="embed-responsive-item" allowfullscreen hidden></iframe>
+
+					</div>
+
 			</div>
 
 
