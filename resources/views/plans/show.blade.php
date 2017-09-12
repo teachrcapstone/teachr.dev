@@ -38,7 +38,7 @@
 			<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
 			<br>
 			@endif
-			
+
 
 			@if(Auth::user()->hasLiked($plan))
 				<div class="form-control">
