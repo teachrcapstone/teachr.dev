@@ -51,11 +51,23 @@
 				<div class="form-group">
 					<br>
 					<input type="BUTTON"  class="btn" value="Update Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
-					<input id="uploadedLesson" type='text' value='{{$plan->file_uploads}}' name='file_uploads'></input>
+					<input id="uploadedLesson" type='text' value='{{$plan->file_uploads}}' name='file_uploads' hidden></input>
 					<h6>Accepted File Types: .doc, .docx, .pdf</h6>
-
-
 				</div>
+
+				@if(!empty($plan->file_uploads))
+					<div>
+
+						<iframe src="https://process.filestackapi.com/output=f:pptx/{{$plan->file_uploads}}" width='100%' height='auto' class="embed-responsive-item" allowfullscreen></iframe>
+
+					</div>
+				@endif
+					<div>
+
+						<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='100%' height='550' class="embed-responsive-item" allowfullscreen hidden></iframe>
+
+					</div>
+
 			</div>
 
 

@@ -27,11 +27,11 @@
                 function lessonPlan(){
                 	console.log("Updating Lesson...");
                 	client.pick({
-                		accept: [".doc", ".docx", ".pdf"],
+                		accept: [".doc", ".docx", ".pptx"],
                 		maxFiles: 1,
                 		minFiles: 1,
                 		fromSources: ['local_file_system', 'googledrive', 'gmail', 'dropbox',],
-                		maxSize: 1024*1024
+                		maxSize: 5120*5120
                 	}).then(function(result){
                 		console.log(JSON.stringify(result));
                 		var handle = result.filesUploaded[0].handle;
@@ -41,6 +41,9 @@
 
                         $("#filestackConfirm").after(function(){
                         return "<p>Document successfully uploaded!</p>";
+
+                        // experiment with changing iframe with upload 
+                        // $('iframe')[0].src = "https://process.filestackapi.com/output=f:webp/" + handle;
                 });
 
                 	});
