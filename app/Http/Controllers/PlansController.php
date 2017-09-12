@@ -37,11 +37,11 @@ class PlansController extends Controller
             // dd($plans);
 
             foreach($search as $key => $value){
-                if ($key == "search"){
+                if ($key == "search" && !empty($value)){
                     $plans->where('content', 'like', '%'. $value . '%')
                           ->orWhere('name', 'like', '%' . $value . "%")
                           ->orWhere('objective', 'like', '%' . $value . '%');
-                } else {
+                } elseif ($key != 'search'){
                     $plans->where($key, 'like', $value);
                 }
             }
