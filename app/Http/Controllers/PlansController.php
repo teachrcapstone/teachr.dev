@@ -175,7 +175,17 @@ class PlansController extends Controller
         $user = User::findOrFail(Auth::id());
 
         $user->like($liked);
-        session()->flash('successMessage', 'Plan added to Like List.');
+        session()->flash('successMessage', 'Plan Liked.');
         return \Redirect::action('PlansController@show', $liked->id);
+    }
+
+    public function unlike($id)
+    {
+        $unliked = Plan::findOrFail($id);
+        $user = User::findOrFail(Auth::id());
+
+        $user->unlike($unliked);
+        session()->flash('successMessage', 'Plan Unliked.');
+        return \Redirect::action("PlansController@show", $unliked->id);
     }
 }
