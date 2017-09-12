@@ -38,7 +38,10 @@
 			<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
 			<br>
 			@endif
-
+			
+			<div class="form-control">
+				<a href="{{ action('PlansController@like', $plan->id )}}" class="btn btn-primary btn-xs">Like This Post</a>
+			</div>
 
 
 			@if(!empty($plan->file_uploads))

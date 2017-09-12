@@ -28,6 +28,7 @@ Route::resource('plans', 'PlansController');
 //Social functionality routes...
 Route::get('follow/{id}', 'UsersController@follow');
 Route::get('unfollow/{id}', 'UsersController@unfollow');
+Route::get('like/{id}', 'PlansController@like');
 
 
 Route::get('dashboard', 'UsersController@dashboard');
