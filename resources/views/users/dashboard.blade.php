@@ -6,15 +6,17 @@
 
 @section('content')
 	<main class="container">
-		<h2>My Dashboard</h2>
-
+				<h1> Welcome, {{ $user->name }}</h1>	
 		<br>
 
 		<div class="row">
 			<div class="col-sm-12 text-center">
+	
 				<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
-				<h4>  {{ $user->name }}</h4>		
+		</div>
 
+		<div class="row">
+			<div class="col-sm-12 text-center">
 				@if($user->id == Auth::id())
 				<div class="form-group">
 					<a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-info btn-xs" role="button">Edit Profile</a>
