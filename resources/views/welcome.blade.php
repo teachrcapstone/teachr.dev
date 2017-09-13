@@ -9,7 +9,7 @@
         }
 
         div.chalk {
-            content: url("/img/chalkboardtext.png");
+            content: url("/img/teachrSplash.png");
             height: 100%;
             max-width: auto;
         }
@@ -30,17 +30,20 @@
             <!-- buttons are intended to be larger -->
             @if(Auth::check())
             @else
-            <div class="row btn-group-lg">
-                <div class="col-md-6 btn">
-                    <form action="{{action('Auth\AuthController@getLogin')}}">
-                        <button class="btn btn-primary">login</button>
-                    </form>
+            <div class="container col-centered text-centered">
+                <div class="row btn-group-lg">
+                    <div class="col-md-6 btn">
+                        <form action="{{action('Auth\AuthController@getLogin')}}">
+                            <button class="btn btn-primary btn-lg col-md-6">login</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6 btn">
+                        <form action="{{action('Auth\AuthController@getRegister')}}">
+                            <button class="btn btn-primary btn-lg col-md-6">signup</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-md-6 btn">
-                    <form action="{{action('Auth\AuthController@getRegister')}}">
-                        <button class="btn btn-primary">signup</button>
-                    </form>
-                </div>
+                
             </div>
             @endif
         </div>

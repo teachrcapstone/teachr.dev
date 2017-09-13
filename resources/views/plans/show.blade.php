@@ -53,11 +53,11 @@
 
 			@if(Auth::user()->hasLiked($plan))
 				<div class="form-control">
-					<a href="{{ action('PlansController@unlike', $plan->id )}}" class="btn btn-primary btn-xs">Unlike This Post</a>
+					<a href="{{ action('PlansController@unlike', $plan->id )}}" class="btn btn-primary btn-xs">Unsave This Lesson Plan</a>
 				</div>
 			@else
 				<div class="form-control">
-					<a href="{{ action('PlansController@like', $plan->id )}}" class="btn btn-primary btn-xs">Like This Post</a>
+					<a href="{{ action('PlansController@like', $plan->id )}}" class="btn btn-primary btn-xs">Save This Lesson Plan</a>
 				</div>
 			@endif
 

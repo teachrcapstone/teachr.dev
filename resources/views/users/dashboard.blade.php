@@ -1,4 +1,4 @@
-@extends('layouts.master')
+	@extends('layouts.master')
 
 @section('title')
 	<title>User Dashboard</title>
@@ -91,10 +91,10 @@
 		<div class="row">
 			<div class="col-sm-5">
 			<hr>
-				<h2>Recent Activity</h2>
+				<h3>Recent Activity</h3>
 			<hr>
 				@foreach($followingsPosts as $post)
-					<a href="{{action('PostsController@show', $post->id)}}"><h3>{{$post->title}}</h3></a>
+					<a href="{{action('PostsController@show', $post->id)}}"><h4>{{$post->title}}</h4></a>
 					<a href="{{ action('UsersController@show', $following->id) }}"><p>Created By: {{$post->user->name}}</p></a>
 					<p>Posted: {{$post->created_at}}</p>
 					<blockquote><p>{{$post->content}}</p></blockquote>
@@ -105,7 +105,7 @@
 			<div class="col-sm-7">
 
 				<div class="title">
-					<h2>
+					<h3>
 						<hr>
 						<span>My Lessons</span> 
 						<div class="actions pull-right">
@@ -118,7 +118,7 @@
 								Add Lesson
 							</a>
 						</div>
-					</h2>
+					</h3>
 
 					<hr>
 
@@ -126,7 +126,7 @@
 						
 				<div class="body">
 					@foreach($userPlans as $plan)
-						<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
+						<a href="{{action('PlansController@show', $plan->id)}}"><h4>{{$plan->name}}</h4></a>
 						<!-- <p>Objective: {{$plan->objective}}</p> -->
 						<p>Created: {{$plan->created_at}}</p>
 					@endforeach
@@ -134,7 +134,7 @@
 				</div>
 			
 				<div class="title">
-					<h2>
+					<h3>
 						<hr>
 						<span>My Posts</span> 
 						<div class="actions pull-right">
@@ -147,37 +147,37 @@
 								Add Post
 							</a>
 						</div>
-					</h2>
+					</h3>
 
 					<hr>
 
 				</div>		
 				<div class="body">
 					@foreach($userPosts as $posts)
-						<a href="{{action('PostsController@show', $posts->id)}}"><h3>{{$posts->title}}</h3></a>
+						<a href="{{action('PostsController@show', $posts->id)}}"><h4>{{$posts->title}}</h4></a>
 						<p>Created: {{$posts->created_at}}</p>
 					@endforeach
 				</div>
 
 
 				<div class="title">
-					<h2>
+					<h3>
 						<hr>
 						<span>Saved Lessons</span> 
 						<div class="actions pull-right">
-							<a href="#" class="btn">
+							<a href="{{action('UsersController@savedPlans')}}" class="btn">
 								<i class="glyphicon glyphicon-search"></i>
 								View All Saved Lessons
 							</a>
 						</div>
-					</h2>
+					</h3>
 
 					<hr>
 
 				</div>		
 				<div class="body">
 					@foreach($likedPlans as $plan)
-						<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
+						<a href="{{action('PlansController@show', $plan->id)}}"><h4>{{$plan->name}}</h4></a>
 						<p>Department: {{$plan->department}} </p>
 						<p>Grade Level: {{$plan->grade_level}}</p>
 					@endforeach
