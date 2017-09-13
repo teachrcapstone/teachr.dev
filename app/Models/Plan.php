@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Overtrue\LaravelFollow\Traits\CanBeLiked;
 use Overtrue\LaravelFollow\Traits\CanBeFavorited;
+use App\Models\BaseModel;
 
-class Plan extends Model
+
+class Plan extends BaseModel
 {
 	use CanBeLiked;
     //

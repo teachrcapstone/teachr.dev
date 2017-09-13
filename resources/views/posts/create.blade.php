@@ -22,9 +22,9 @@
 			<div class="form-group">
 				<select name='category' class="form-control">
 					<option name="general" value="general">General</option>
-					<option name="elementary" value="elementary">Elementary</option>
-					<option name="middle" value="middle">Middle</option>
-					<option name="high" value="high">High</option>
+					<option name="elementary" value="elementary">Elementary School (K-5)</option>
+					<option name="middle" value="middle">Middle School (6-8)</option>
+					<option name="high" value="high">High School (9-12)</option>
 					<option name="technology" value="technology">Technology</option>
 					<option name="management" value="management">Classroom Management</option>
 					<option name="admin" value="admin">Administration</option>
