@@ -129,7 +129,7 @@
 					<div class="panel-body">
 						<p> <span class='h4'>Objective: </span> {{ $plan->objective }} </p>
 						<blockquote>
-							<p> {!! Purifier::clean($plan->content) !!} </p>
+							<p> {!! Purifier::clean($plan->content, 'settings') !!} </p>
 						</blockquote>
 					</div>
 					<div class="panel-footer">
