@@ -15,8 +15,10 @@ use Overtrue\LaravelFollow\Traits\CanLike;
 use Overtrue\LaravelFollow\Traits\CanFavorite;
 
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use App\Models\BaseModel;
 
-class User extends Model implements AuthenticatableContract,
+
+class User extends BaseModel implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
@@ -62,17 +64,7 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\Models\Plan', 'created_by');
     }
 
-    public function getCreatedAtAttribute($value)
-    {
-        $utc = \Carbon\Carbon::createFromFormat($this->getDateFormat(), $value);
-        return $utc->setTimezone('America/Chicago')->toDayDateTimeString();
-    }
 
-    public function getUpdatedAtAttribute($value)
-    {
-        $utc = \Carbon\Carbon::createFromFormat($this->getDateFormat(), $value);
-        return $utc->setTimezone('America/Chicago')->toDayDateTimeString();
-    }
 
 
 }
