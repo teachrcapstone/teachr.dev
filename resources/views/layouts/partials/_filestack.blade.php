@@ -8,7 +8,7 @@
         		accept: "image/*",
         		maxFiles: 1,
         		fromSources: ['local_file_system', 'facebook', 'googledrive', 'webcam'],
-        		imageMax: [400,400],
+        		imageMax: [500,500],
         	}).then(function(result){
         		console.log(JSON.stringify(result));
         		var handle = result.filesUploaded[0].handle;
@@ -19,6 +19,8 @@
                 $("#filestackConfirm").after(function(){
                     return "<p>Image successfully uploaded!</p>";
                 });
+
+                $("#editIcon").attr('src', "https://process.filestackapi.com/resize=w:300,h:300/circle/" + handle);
 
         	});
         }
