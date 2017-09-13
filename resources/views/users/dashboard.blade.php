@@ -16,6 +16,7 @@
 				<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
 			</div>
 		</div>
+		<br>
 
 <!-- 		<div class="row">
 			<div class="col-sm-12 text-center">
@@ -88,7 +89,7 @@
 
 
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 			<hr>
 				<h2>Recent Activity</h2>
 			<hr>
@@ -101,7 +102,7 @@
 				
 			</div>
 
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 
 				<div class="title">
 					<h2>
@@ -126,7 +127,7 @@
 				<div class="body">
 					@foreach($userPlans as $plan)
 						<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
-						<p>Objective: {{$plan->objective}}</p>
+						<!-- <p>Objective: {{$plan->objective}}</p> -->
 						<p>Created: {{$plan->created_at}}</p>
 					@endforeach
 					
@@ -177,10 +178,10 @@
 				<div class="body">
 					@foreach($likedPlans as $plan)
 						<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
-						<p>Objective: {{$plan->objective}}</p>
-						<p>Department: {{$plan->department}}</p>
+						<p>Department: {{$plan->department}} </p>
 						<p>Grade Level: {{$plan->grade_level}}</p>
 					@endforeach
+
 				</div>
 
 			</div>

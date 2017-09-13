@@ -183,7 +183,7 @@ class UsersController extends Controller
 
 		$likedIds = $user->likes(Plan::class)->lists('followable_id')->toArray();
 
-		$likedPlans = Plan::whereIn('id', $likedIds)->orderBy('created_at','DESC')->limit(5)->get();
+		$likedPlans = Plan::whereIn('id', $likedIds)->orderBy('created_at','DESC')->limit(3)->get();
 
 		
 		$data['user'] = $user;
