@@ -181,6 +181,9 @@ class UsersController extends Controller
 
 		$followingsPosts = Post::whereIn('created_by', $userIds)->orderBy('created_at','DESC')->limit(5)->get();
 
+		$likedIds = $user->likes(Plan::class)->lists('followable_id')->toArray();
+
+		$likedPlans = Plan::whereIn('id', $likedIds)->orderBy('created_at','DESC')->limit(3)->get();
 
 		
 		$data['user'] = $user;
@@ -189,6 +192,7 @@ class UsersController extends Controller
 		$data['followers']=$followers;
 		$data['followings']= $followings;
 		$data['followingsPosts'] = $followingsPosts;
+		$data['likedPlans'] = $likedPlans;
 
 
     	return view('users.dashboard', $data);
