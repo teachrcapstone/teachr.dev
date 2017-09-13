@@ -32,7 +32,7 @@ Route::get('like/{id}', 'PlansController@like');
 Route::get('unlike/{id}', 'PlansController@unlike');
 Route::get('copy/{id}', 'PlansController@copy');
 
-
+Route::get('savedplans', 'UsersController@savedPlans');
 Route::get('dashboard', 'UsersController@dashboard');
 Route::get('myposts', 'UsersController@myPosts');
 Route::resource('users', 'UsersController');

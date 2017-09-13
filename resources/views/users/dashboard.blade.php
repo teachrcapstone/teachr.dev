@@ -165,7 +165,7 @@
 						<hr>
 						<span>Saved Lessons</span> 
 						<div class="actions pull-right">
-							<a href="#" class="btn">
+							<a href="{{action('UsersController@savedPlans')}}" class="btn">
 								<i class="glyphicon glyphicon-search"></i>
 								View All Saved Lessons
 							</a>
