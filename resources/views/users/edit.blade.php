@@ -23,10 +23,12 @@
 				<div class="text-center col-centered">
 					<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}" id="editIcon">
 
-					<div class="container"></div>
-					<div class="form-group">
-			
-						<input type="BUTTON"  class="btn" value="update icon..." id="updateIcon filestackConfirm" onclick="updateIcon()">
+					<div class="container">
+						
+						<div class="form-group" style="margin-top: 1em;">
+				
+							<input type="BUTTON"  class="btn" value="update icon..." id="updateIcon filestackConfirm" onclick="updateIcon()">
+						</div>
 					</div>
 					
 				</div>
@@ -34,15 +36,20 @@
 			</div>
 
 			<div class="form-group">
-
-				<input class="form-control" type="text" name="name" value="{{ $user->name }}" placeholder="Enter Name">
+			<label for="Name">Name:</label>
+				<input class="form-control" type="text" name="name" value="{{ $user->name }}" placeholder="What do you want to go by?">
 				
 			</div>
 
 			<div class="form-group">
-				
-				<input class="form-control" id="filestack" type="text" name="email" value="{{ $user->email }}" placeholder="Enter Updated Email">
+				<label for="Email">Email:</label>
+				<input class="form-control" id="filestack" type="text" name="email" value="{{ $user->email }}" placeholder="We'll send you updates here.">
 				<input id="imageEdit" type='hidden' value='{{$user->image}}' name='image'></input>
+			</div>
+
+			<div class="form-group">
+				<label for="Bio">Bio:</label>
+				<textarea rows="4" cols="15" class="form-control" name="bio" value="{{$user->bio}}" placeholder="Say something about yourself!">{{$user->bio}}</textarea>
 			</div>
 
 
@@ -56,7 +63,7 @@
 
 			{!! csrf_field() !!}
 
-			<button class="btn btn-danger">Delete Account</button>
+			<button class="btn btn-xs btn-link"><h6>Delete Account</h6></button>
 
 			{{ method_field('DELETE') }}
 			
