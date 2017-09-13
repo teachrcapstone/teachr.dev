@@ -163,6 +163,23 @@ class UsersController extends Controller
 	 return view('posts.userposts', $data);
 	}
 
+	public function savedPlans()
+	{    
+	 	$user = User::findOrFail(Auth::id());
+
+	 	$likedIds = $user->likes(Plan::class)->lists('followable_id')->toArray();
+
+	 	$likedPlans = Plan::whereIn('id', $likedIds)->orderBy('created_at','DESC')->paginate(10);
+
+
+		$data['likedPlans'] = $likedPlans;
+
+
+	 return view('users.savedplans', $data);
+	}
+
+
+
 
     public function dashboard()
     {

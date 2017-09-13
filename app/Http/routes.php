@@ -31,7 +31,7 @@ Route::get('unfollow/{id}', 'UsersController@unfollow');
 Route::get('like/{id}', 'PlansController@like');
 Route::get('unlike/{id}', 'PlansController@unlike');
 
-
+Route::get('savedplans', 'UsersController@savedPlans');
 Route::get('dashboard', 'UsersController@dashboard');
 Route::get('myposts', 'UsersController@myPosts');
 Route::resource('users', 'UsersController');
