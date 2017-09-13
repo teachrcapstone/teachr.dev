@@ -30,6 +30,7 @@ Route::get('follow/{id}', 'UsersController@follow');
 Route::get('unfollow/{id}', 'UsersController@unfollow');
 Route::get('like/{id}', 'PlansController@like');
 Route::get('unlike/{id}', 'PlansController@unlike');
+Route::get('copy/{id}', 'PlansController@copy');
 
 
 Route::get('dashboard', 'UsersController@dashboard');
@@ -52,5 +53,3 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 // Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-

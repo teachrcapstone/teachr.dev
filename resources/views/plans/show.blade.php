@@ -68,5 +68,10 @@
 				</div>
 			</div>
 		</div>
+
+		@if (!Auth::user()->hasFavorited($plan))
+			<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-default btn-xs'>Copy Plan</a>
+
+		@endif
 	</main>
 @stop
