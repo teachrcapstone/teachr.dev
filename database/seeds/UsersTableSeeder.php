@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
 			$user->name = $faker->name;
 			$user->email = $faker->safeEmail;
 			$user->password = Hash::make(env('USER_PASSWORD'));
+            $user->image = "TRgy9iAwRWyi7UCVOH50";
 			$user->save();
 		}
 
