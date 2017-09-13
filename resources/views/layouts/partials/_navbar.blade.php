@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container container-fluid">
 		<div class="navbar-header navbar-brand">

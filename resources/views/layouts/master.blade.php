@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	@yield('title')
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
