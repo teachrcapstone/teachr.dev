@@ -72,7 +72,7 @@
 
 
 			<div class="col-md-7 col-lg-8">
-				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20" id='wysiwyg'> {{ Purifier::clean($plan->content) }} </textarea>
+				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20" id='wysiwyg'> {{ Purifier::clean($plan->content, 'settings') }} </textarea>
 
 				{{ method_field('PUT')}}
 

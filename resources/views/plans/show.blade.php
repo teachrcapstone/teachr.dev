@@ -64,7 +64,7 @@
 		<div class="col-sm-8">
 			<div class="panel panel-info">
 				<div class="panel-body">
-					<p>{!! Purifier::clean($plan->content) !!}</p>
+					<p>{!! Purifier::clean($plan->content, 'settings') !!}</p>
 				</div>
 			</div>
 		</div>
