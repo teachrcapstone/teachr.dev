@@ -5,8 +5,13 @@
 @stop
 
 @section('content')
-	<main class="container">
-		<div class="col-sm-4">
+	<style media="screen">
+		.lesson-tab{
+			margin-right:0;
+		}
+	</style>
+	<main class="">
+		<div class="col-sm-4 col-md-4 col-lg-3">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<h1>{{ $plan->name }}</h1>
@@ -30,14 +35,20 @@
 					<p>Created: {{ $plan->created_at }} Updated: {{ $plan->updated_at }}</p>
 				</div>
 			</div>
-			<a href="{{action('PlansController@edit', $plan->id)}}">Edit this plan</a>
 
+			@if (Auth::id() == $plan->created_by)
 
-			@if(!empty($plan->file_uploads))
+				<a href="{{ action('PlansController@edit', $plan->id) }}" class='btn btn-default btn-xs'">Edit this plan</a>
 
-			<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
-			<br>
+			@elseif (!Auth::user()->hasFavorited($plan))
+
+				<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-default btn-xs'>Copy Plan</a>
+
 			@endif
+
+
+
+
 
 
 			@if(Auth::user()->hasLiked($plan))
@@ -51,27 +62,47 @@
 			@endif
 
 
-
-
-			@if(!empty($plan->file_uploads))
-				<div>
-
-					<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='100%' height='550' class="embed-responsive-item" allowfullscreen></iframe>
-
-				</div>
-			@endif
 		</div>
-		<div class="col-sm-8">
-			<div class="panel panel-info">
-				<div class="panel-body">
-					<p>{!! Purifier::clean($plan->content, 'settings') !!}</p>
+		<div class="col-sm-8 col-md-8 col-lg-9">
+			<div class="lesson-tab container container-fluid">
+
+				<div class="panel panel-info">
+					<ul  class="nav nav-tabs panel-body">
+						<li class="active">
+							<a  href="#1a" data-toggle="tab">Lesson</a>
+						</li>
+						<li>
+							<a href="#2a" data-toggle="tab">Original File</a>
+						</li>
+					</ul>
+				<div>
+					<div class="tab-content">
+
+						<div class='tab-pane active' id="1a">
+							<p>{!! Purifier::clean($plan->content, 'settings') !!}</p>
+						</div>
+						<div class="tab-pane" id="2a">
+							@if(!empty($plan->file_uploads))
+
+							<a href="https://cdn.filestackcontent.com/{{$plan->file_uploads}}" target="_blank">Download Lesson Plan</a>
+							<br>
+							@endif
+
+
+							@if(!empty($plan->file_uploads))
+								<div>
+
+									<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='50%' height='550' class="embed-responsive-item" allowfullscreen></iframe>
+
+								</div>
+							@endif
+						</div>
+					</div>
 				</div>
+				</div>
+
 			</div>
 		</div>
 
-		@if (!Auth::user()->hasFavorited($plan))
-			<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-default btn-xs'>Copy Plan</a>
-
-		@endif
 	</main>
 @stop

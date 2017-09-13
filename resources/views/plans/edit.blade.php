@@ -58,7 +58,7 @@
 				@if(!empty($plan->file_uploads))
 					<div>
 
-						<iframe src="https://process.filestackapi.com/output=f:pptx/{{$plan->file_uploads}}" width='100%' height='auto' class="embed-responsive-item" allowfullscreen></iframe>
+						<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='100%' height='auto' class="embed-responsive-item" allowfullscreen></iframe>
 
 					</div>
 				@endif
