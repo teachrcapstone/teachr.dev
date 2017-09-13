@@ -6,24 +6,31 @@
 
 @section('content')
 	<main class="container">
-		<h2>My Dashboard</h2>
+		<div class="row">
+			<h1> Welcome, {{ $user->name }}	<a href="{{ action('UsersController@edit', $user->id) }}" class="small"><i class="glyphicon glyphicon-pencil"></i></a></h1>
+		</div>
 
-		<br>
 
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
-				<h4>  {{ $user->name }}</h4>		
+			</div>
+		</div>
+		<br>
 
+<!-- 		<div class="row">
+			<div class="col-sm-12 text-center">
 				@if($user->id == Auth::id())
 				<div class="form-group">
 					<a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-info btn-xs" role="button">Edit Profile</a>
 				</div>
 				@endif
 			</div>
-		</div>
+		</div> -->
 
-		<div class="row">
+
+
+		<div class="row margin-bottom-30">
 			<div class="col-sm-12 text-center">
 
 				<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#followingModal">{{ $followings->count()}} Following</button>
@@ -32,7 +39,6 @@
 				<div id="followingModal" class="modal fade" role="dialog">
 					<div class="modal-dialog">
 
-						<!-- Modal content-->
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -83,46 +89,101 @@
 
 
 		<div class="row">
-			<div class="col-sm-6">
-
+			<div class="col-sm-5">
+			<hr>
 				<h2>Recent Activity</h2>
-
+			<hr>
 				@foreach($followingsPosts as $post)
-					<h4>{{$post->title}}</h4>
-					<p>Created By: {{$post->user->name}}</p>
-					<p>{{$post->content}}</p>
-					<p>{{$post->created_at}}</p>
-					<hr>
+					<a href="{{action('PostsController@show', $post->id)}}"><h3>{{$post->title}}</h3></a>
+					<a href="{{ action('UsersController@show', $following->id) }}"><p>Created By: {{$post->user->name}}</p></a>
+					<p>Posted: {{$post->created_at}}</p>
+					<blockquote><p>{{$post->content}}</p></blockquote>
 				@endforeach
 				
 			</div>
 
-			<div class="col-sm-6">
-				<h2>My Lessons</h2>
-				@foreach($userPlans as $plan)
-					<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
-					<p>Created: {{$plan->created_at}}</p>
+			<div class="col-sm-7">
+
+				<div class="title">
+					<h2>
+						<hr>
+						<span>My Lessons</span> 
+						<div class="actions pull-right">
+							<a href="#" class="btn">
+								<i class="glyphicon glyphicon-search"></i>
+								View My Lessons 
+							</a>
+							<a href="{{ action('PlansController@create') }}" class="btn">
+								<i class="glyphicon glyphicon-plus"></i>
+								Add Lesson
+							</a>
+						</div>
+					</h2>
+
 					<hr>
-				@endforeach
 
-				@if($user->id == Auth::id())
-					<a href="#" class="btn btn-info" role="button">View My Lesson Plans</a>
-					<a href="{{ action('PlansController@create') }}" class="btn btn-info" role="button">Add Lesson</a>
-				@endif
-
-								<h2>My Posts</h2>
-				@foreach($userPosts as $posts)
-					<a href="{{action('PostsController@show', $posts->id)}}"><h3>{{$posts->title}}</h3></a>
-					<p>Created: {{$posts->created_at}}</p>
+				</div>
+						
+				<div class="body">
+					@foreach($userPlans as $plan)
+						<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
+						<!-- <p>Objective: {{$plan->objective}}</p> -->
+						<p>Created: {{$plan->created_at}}</p>
+					@endforeach
+					
+				</div>
+			
+				<div class="title">
+					<h2>
+						<hr>
+						<span>My Posts</span> 
+						<div class="actions pull-right">
+							<a href="{{ action('UsersController@myPosts') }}" class="btn">
+								<i class="glyphicon glyphicon-search"></i>
+								View My Posts 
+							</a>
+							<a href="{{ action('PostsController@create') }}" class="btn">
+								<i class="glyphicon glyphicon-plus"></i>
+								Add Post
+							</a>
+						</div>
+					</h2>
 
 					<hr>
-				@endforeach
 
-				@if($user->id == Auth::id())
-					<a href="{{ action('UsersController@myPosts') }}" class="btn btn-info" role="button">View My Posts</a>
-					<a href="{{ action('PostsController@create') }}" class="btn btn-info" role="button">Add Post</a>
-				@endif
-				
+				</div>		
+				<div class="body">
+					@foreach($userPosts as $posts)
+						<a href="{{action('PostsController@show', $posts->id)}}"><h3>{{$posts->title}}</h3></a>
+						<p>Created: {{$posts->created_at}}</p>
+					@endforeach
+				</div>
+
+
+				<div class="title">
+					<h2>
+						<hr>
+						<span>Saved Lessons</span> 
+						<div class="actions pull-right">
+							<a href="#" class="btn">
+								<i class="glyphicon glyphicon-search"></i>
+								View All Saved Lessons
+							</a>
+						</div>
+					</h2>
+
+					<hr>
+
+				</div>		
+				<div class="body">
+					@foreach($likedPlans as $plan)
+						<a href="{{action('PlansController@show', $plan->id)}}"><h3>{{$plan->name}}</h3></a>
+						<p>Department: {{$plan->department}} </p>
+						<p>Grade Level: {{$plan->grade_level}}</p>
+					@endforeach
+
+				</div>
+
 			</div>
 			
 		</div>

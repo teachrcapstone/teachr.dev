@@ -122,8 +122,8 @@
 			@foreach ($plans as $plan)
 				<div class="panel panel-info">
 					<div class="panel-heading">
-						<span class='h4'> {{ $plan->name }} </span>
-						<span class='h6'> by {{ $plan->user->name }} </span>
+						<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h4'> {{ $plan->name }} </span>
+						<span class='h6'> by {{ $plan->user->name }} </span></a>
 
 					</div>
 					<div class="panel-body">

@@ -45,18 +45,21 @@ class PlansController extends Controller
                           ->orWhere('objective', 'like', '%' . $value . '%');
                 } elseif ($key != 'search'){
                     $plans->where($key, 'like', $value);
+                } else {
+                    continue;
                 }
             }
 
             // dd($plans);
             $plans = $plans->get();
-            $data['plans'] = $plans;
+            $result = Plan::hydrate($plans);
+            $data['plans'] = $result;
 
         } else {
             $plans = Plan::all();
             $data['plans'] = $plans;
         }
-
+        // var_dump($plans);
 
         return view('plans.index', $data);
     }
@@ -181,11 +184,18 @@ class PlansController extends Controller
         //
         $plan = Plan::findOrFail($id);
 
+        $user = Auth::user();
+
+        if ($plan->copied_from){
+            $user->unfavorite($plan);
+        }
+        
         $plan->delete();
 
         // Log::info('Plan ' . $plan->id . ' was deleted');
 
         $request->session()->flash("successMessage" , "Your plan was successfully deleted");
+
 
         return \Redirect::action('UsersController@show', Auth::id());
     }
@@ -211,28 +221,33 @@ class PlansController extends Controller
         return \Redirect::action("PlansController@show", $unliked->id);
     }
 
-    // public function copyPlan($id)
-    // {
-    //     $copied = Plan::findOrFail($id);
-    //
-    //     $user = User::findOrFail(Auth::id());
-    //
-    //     $user->favorite($copied);
-    //
-    //     $plan = new Plan();
-    //     $plan->name = $copied->name;
-    //     $plan->tek = $copied->tek;
-    //     $plan->objective = $copied->objective;
-    //     $plan->department = $copied->department;
-    //     $plan->grade_level = $copied->grade_level;
-    //     $plan->content = $copied->content;
-    //     $plan->file_uploads = $copied->file_uploads;
-    //     $plan->created_by = Auth::id();
-    //     $plan->copied_from = $copied->user->id;
-    //     $plan->save();
-    //
-    // }
-    //
+    public function copy($id)
+    {
+        $copied = Plan::findOrFail($id);
+
+        $user = User::findOrFail(Auth::id());
+
+        if (!$user->hasFavorited($copied)){
+            $user->favorite($copied);
+
+            $plan = new Plan();
+            $plan->name = $copied->name;
+            $plan->tek = $copied->tek;
+            $plan->objective = $copied->objective;
+            $plan->department = $copied->department;
+            $plan->grade_level = $copied->grade_level;
+            $plan->content = $copied->content;
+            $plan->file_uploads = $copied->file_uploads;
+            $plan->created_by = Auth::id();
+            $plan->copied_from = $copied->user->id;
+            $plan->save();
+        }
+
+
+        return \Redirect::action('PlansController@show', $copied->id);
+
+    }
+
     // public function unfavorite($id)
     // {
     //
