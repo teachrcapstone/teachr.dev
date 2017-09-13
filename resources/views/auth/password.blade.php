@@ -6,6 +6,10 @@
 
 @section('content')
 
+	@if (session('status'))
+		<p class="alert alert-success">{{ session('status') }}</p>
+	@endif
+	
 	<main class="container">
 		<form method="POST" action="/password/email">
 			{!! csrf_field() !!}

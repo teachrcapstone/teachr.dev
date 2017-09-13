@@ -210,4 +210,31 @@ class PlansController extends Controller
         session()->flash('successMessage', 'Plan Unliked.');
         return \Redirect::action("PlansController@show", $unliked->id);
     }
+
+    // public function copyPlan($id)
+    // {
+    //     $copied = Plan::findOrFail($id);
+    //
+    //     $user = User::findOrFail(Auth::id());
+    //
+    //     $user->favorite($copied);
+    //
+    //     $plan = new Plan();
+    //     $plan->name = $copied->name;
+    //     $plan->tek = $copied->tek;
+    //     $plan->objective = $copied->objective;
+    //     $plan->department = $copied->department;
+    //     $plan->grade_level = $copied->grade_level;
+    //     $plan->content = $copied->content;
+    //     $plan->file_uploads = $copied->file_uploads;
+    //     $plan->created_by = Auth::id();
+    //     $plan->copied_from = $copied->user->id;
+    //     $plan->save();
+    //
+    // }
+    //
+    // public function unfavorite($id)
+    // {
+    //
+    // }
 }
