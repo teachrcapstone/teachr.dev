@@ -115,6 +115,8 @@
 
 			</div>
 		</div>
-
+		<div>
+			{{-- <p>{{ $plan->user->followed()}}</p> --}}
+		</div>
 	</main>
 @stop
