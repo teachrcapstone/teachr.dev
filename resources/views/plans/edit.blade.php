@@ -8,7 +8,10 @@
 
 @section('content')
 
-	<main class="container">
+	<div><i class="glyphicon glyphicon-menu-left"></i>Back to Lessons</div>
+<main>
+	<div class="container">
+
 		<div class="panel panel-info">
 		<div class="panel-heading">
 			<h1>Update Your Lesson Plan</h1>
@@ -52,7 +55,7 @@
 					<br>
 					<input type="BUTTON"  class="btn" value="Update Lesson Plan" id="updateLesson filestackConfirm" onclick="lessonPlan()">
 					<input id="uploadedLesson" type='text' value='{{$plan->file_uploads}}' name='file_uploads' hidden></input>
-					<h6>Accepted File Types: .doc, .docx, .pdf</h6>
+					<h6>Accepted File Types: .doc, .docx, .odt</h6>
 				</div>
 
 				@if(!empty($plan->file_uploads))
@@ -89,8 +92,9 @@
 		</form>
 		</div>
 		</div>
-	</main>
+	</div>
 
+</main>
 @stop
 @section('scripts')
 	@include('layouts.partials._summernote-js')

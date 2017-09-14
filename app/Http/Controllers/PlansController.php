@@ -112,9 +112,10 @@ class PlansController extends Controller
         $plan->save();
 
 
+
         $request->session()->flash("successMessage" , "Your plan was successfully created");
 
-        return \Redirect::action('UsersController@show', Auth::id());
+        return \Redirect::action('PlansController@show', $plan->id);
     }
 
     /**
@@ -189,7 +190,7 @@ class PlansController extends Controller
         if ($plan->copied_from){
             $user->unfavorite($plan);
         }
-        
+
         $plan->delete();
 
         // Log::info('Plan ' . $plan->id . ' was deleted');
@@ -239,7 +240,7 @@ class PlansController extends Controller
             $plan->content = $copied->content;
             $plan->file_uploads = $copied->file_uploads;
             $plan->created_by = Auth::id();
-            $plan->copied_from = $copied->user->id;
+            // $plan->copied_from = $copied->user->id;
             $plan->save();
         }
 
