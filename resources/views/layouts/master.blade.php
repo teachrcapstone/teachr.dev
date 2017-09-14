@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	@yield('title')
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="https://use.fontawesome.com/6949794e50.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
 	{{-- <script src="https://api.filestackapi.com/filestack.js"></script> --}}

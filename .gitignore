@@ -5,3 +5,5 @@ Homestead.json
 .env
 resources/views/.DS_Store
 resources/views/posts/.DS_Store
+.DS_Store
+public/.DS_Store
