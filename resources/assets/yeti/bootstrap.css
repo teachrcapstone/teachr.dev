@@ -7057,6 +7057,12 @@ input[type="checkbox"] {
   font-size: 12px;
   font-weight: 300;
 }
+.panel-heading {
+  margin-bottom: 5px;
+}
+.panel .nav {
+  padding: 0px 10px;
+}
 .panel-heading,
 .panel-footer {
   border-top-right-radius: 0;
@@ -7074,5 +7080,8 @@ body {
 }
 .navbar .container,
 .navbar .container-fluid {
+  width: 95%;
+}
+.container .nav-tabs {
   width: 95%;
 }

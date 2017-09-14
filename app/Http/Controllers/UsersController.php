@@ -186,7 +186,7 @@ class UsersController extends Controller
     {
     	$user = User::findOrFail(Auth::id());
 
-		$userPlans = $user->plans;
+		$userPlans = Plan::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
 
@@ -197,7 +197,7 @@ class UsersController extends Controller
 		$userIds = $user->followings()->lists('followable_id')->toArray();
 		// $userIds[] = $user->id;
 
-		$followingsPosts = Post::whereIn('created_by', $userIds)->orderBy('created_at','DESC')->limit(5)->get();
+		$followingsPosts = Post::whereIn('created_by', $userIds)->orderBy('created_at','DESC')->limit(7)->get();
 
 		$likedIds = $user->likes(Plan::class)->lists('followable_id')->toArray();
 

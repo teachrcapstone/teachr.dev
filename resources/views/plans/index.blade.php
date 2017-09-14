@@ -120,7 +120,7 @@
 		</nav>
 		<div class="col-md-8 col-lg-9">
 			@foreach ($plans as $plan)
-				<div class="panel panel-info">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h4'> {{ $plan->name }} </span>
 						<span class='h6'> by {{ $plan->user->name }} </span></a>
