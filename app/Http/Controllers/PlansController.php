@@ -112,9 +112,10 @@ class PlansController extends Controller
         $plan->save();
 
 
+
         $request->session()->flash("successMessage" , "Your plan was successfully created");
 
-        return \Redirect::action('UsersController@show', Auth::id());
+        return \Redirect::action('PlansController@show', $plan->id);
     }
 
     /**
