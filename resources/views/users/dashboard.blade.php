@@ -2,40 +2,31 @@
 
 @section('title')
 	<title>User Dashboard</title>
+	<style type="text/css">
+
+		main {
+			padding-top: 3em;
+		}
+		.im{
+			color: white;
+			font-size: 12px;
+
+		}
+
+
+	</style>
 @stop
 
 @section('content')
 	<main class="container">
 		<div class="row">
-			<h1> Welcome, {{ $user->name }}	<a href="{{ action('UsersController@edit', $user->id) }}" class="small"><i class="glyphicon glyphicon-pencil"></i></a></h1>
-		</div>
+			<div class="col-sm-10">
+				<h1> Welcome, {{ $user->name }}	<a href="{{ action('UsersController@edit', $user->id) }}" class="small"><i class="glyphicon glyphicon-pencil"></i></a></h1>
 
-
-		<div class="row">
-			<div class="col-sm-12 text-center">
-				<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
-			</div>
-		</div>
-		<br>
-
-<!-- 		<div class="row">
-			<div class="col-sm-12 text-center">
-				@if($user->id == Auth::id())
-				<div class="form-group">
-					<a href="{{ action('UsersController@edit', $user->id) }}" class="btn btn-info btn-xs" role="button">Edit Profile</a>
-				</div>
-				@endif
-			</div>
-		</div> -->
-
-
-
-		<div class="row margin-bottom-30">
-			<div class="col-sm-12 text-center">
+				<br>
 
 				<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#followingModal">{{ $followings->count()}} Following</button>
 
-	
 				<div id="followingModal" class="modal fade" role="dialog">
 					<div class="modal-dialog">
 
@@ -62,7 +53,6 @@
 
 				<div id="followerModal" class="modal fade" role="dialog">
 					<div class="modal-dialog">
-
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -80,109 +70,140 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			
-			</div>	
+				</div>	
+			</div>
+
+			<div class="col-sm-2">
+				<img class="img-responsive" src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
+			</div>
 
 		</div>
 
-
+		<br>
 
 		<div class="row">
 			<div class="col-sm-5">
-			<hr>
-				<h3>Recent Activity</h3>
-			<hr>
-				@foreach($followingsPosts as $post)
-					<a href="{{action('PostsController@show', $post->id)}}"><h4>{{$post->title}}</h4></a>
-					<a href="{{ action('UsersController@show', $following->id) }}"><p>Created By: {{$post->user->name}}</p></a>
-					<p>Posted: {{$post->created_at}}</p>
-					<blockquote><p>{{$post->content}}</p></blockquote>
-				@endforeach
-				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3>Recent Activity</h3>
+					</div>
+
+					<div class="panel-body">  
+						@foreach($followingsPosts as $post)
+							<div class="well shadow-z-1">
+								<div class="media">
+									<div class="media-left">
+										<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$post->user->image}}" class="media-object" style="width:60px">
+										<a href="{{ action('UsersController@show', $following->id) }}"><p class="text-center">{{$post->user->name}}</p></a>
+									</div>
+									
+									<div class="media-body">
+										<h4 class="media-heading">
+											<a href="{{action('PostsController@show', $post->id)}}"><strong>{{$post->title}}</strong></a>	
+											<p><small>{{$post->created_at}}</small></p>
+										</h4>
+										<!-- <h4><em>| {{$post->content}}</em></h4> -->
+										<blockquote>{{$post->content}}</blockquote>
+									</div>
+								</div>
+							</div>
+						@endforeach
+					</div>
+				</div>
 			</div>
 
 			<div class="col-sm-7">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3>
+							<span>My Lessons</span> 
+							<div class="actions pull-right">
+								<a class="im" href="#" class="btn"><i class="glyphicon glyphicon-search"></i>View My Lessons </a>
+								<a class="im" href="{{ action('PlansController@create') }}" class="btn"><i class="glyphicon glyphicon-plus"></i>Add Lesson</a>
+							</div>
+						</h3>
+					</div>
 
-				<div class="title">
-					<h3>
-						<hr>
-						<span>My Lessons</span> 
-						<div class="actions pull-right">
-							<a href="#" class="btn">
-								<i class="glyphicon glyphicon-search"></i>
-								View My Lessons 
-							</a>
-							<a href="{{ action('PlansController@create') }}" class="btn">
-								<i class="glyphicon glyphicon-plus"></i>
-								Add Lesson
-							</a>
+					<div class="panel-body">  
+						<div class="well shadow-z-1">
+							@foreach($userPlans as $plan)
+								<h4>
+									<a href="{{action('PlansController@show', $plan->id)}}"><strong>{{$plan->name}}</strong></a>
+								<!-- <p>Objective: {{$plan->objective}}</p> -->
+									<p><small> {{$plan->created_at}}</small></p>
+								</h4>
+								<p>Objective: {{$plan->objective}}</p>
+								<hr>
+
+							@endforeach
 						</div>
-					</h3>
-
-					<hr>
-
-				</div>
-						
-				<div class="body">
-					@foreach($userPlans as $plan)
-						<a href="{{action('PlansController@show', $plan->id)}}"><h4>{{$plan->name}}</h4></a>
-						<!-- <p>Objective: {{$plan->objective}}</p> -->
-						<p>Created: {{$plan->created_at}}</p>
-					@endforeach
-					
+					</div>
 				</div>
 			
-				<div class="title">
-					<h3>
-						<hr>
-						<span>My Posts</span> 
-						<div class="actions pull-right">
-							<a href="{{ action('UsersController@myPosts') }}" class="btn">
-								<i class="glyphicon glyphicon-search"></i>
-								View My Posts 
-							</a>
-							<a href="{{ action('PostsController@create') }}" class="btn">
-								<i class="glyphicon glyphicon-plus"></i>
-								Add Post
-							</a>
+			
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3>
+							<span>My Posts</span> 
+							<div class="actions pull-right">
+								<a class="im" href="{{ action('UsersController@myPosts') }}" class="btn"><i class="glyphicon glyphicon-search"></i>View My Posts </a>
+								<a class="im" href="{{ action('PostsController@create') }}" class="btn"><i class="glyphicon glyphicon-plus"></i>Add Post</a>
+							</div>
+						</h3>
+					</div>
+
+					<div class="panel-body">  
+						<div class="well shadow-z-1">
+							@foreach($userPosts as $post)
+								<h4>
+									<a href="{{action('PostsController@show', $post->id)}}"><strong>{{$post->title}}</strong></a>
+									<p><small> {{$post->created_at}}</small></p>
+								</h4>
+								<hr>
+							@endforeach
 						</div>
-					</h3>
+					</div>
+				</div>
+	
+	
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3>
+							<span>Saved Lessons</span> 
+							<div class="actions pull-right">
+								<a class="im" href="{{action('UsersController@savedPlans')}}" class="btn"><i class="glyphicon glyphicon-search"></i>View All Saved Lessons</a>
+							</div>
+						</h3>
+					</div>
 
-					<hr>
+					<div class="panel-body">  
+						<div class="well shadow-z-1">
+							@foreach($likedPlans as $plan)
+								<h4>
+									<a href="{{ action('PlansController@show', $plan->id)}} "><strong>{{$plan->name}}</strong></a>
+									<p><small> {{$plan->created_at}}</small></p>
+								</h4>
+								<div class="row">
+									<div class="col-sm-4">
+										<strong>Department:</strong> {{$plan->department}}
+									</div>
+									<div class="col-sm-4">
+										<strong>Grade Level:</strong> {{$plan->grade_level}}
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">		
+										<strong>Objective:</strong> {{$plan->objective}}
+									</div>
+									
+								</div>
 
-				</div>		
-				<div class="body">
-					@foreach($userPosts as $posts)
-						<a href="{{action('PostsController@show', $posts->id)}}"><h4>{{$posts->title}}</h4></a>
-						<p>Created: {{$posts->created_at}}</p>
-					@endforeach
+								<hr>
+							@endforeach
+						</div>
+					</div>
 				</div>
 
-
-				<div class="title">
-					<h3>
-						<hr>
-						<span>Saved Lessons</span> 
-						<div class="actions pull-right">
-							<a href="{{action('UsersController@savedPlans')}}" class="btn">
-								<i class="glyphicon glyphicon-search"></i>
-								View All Saved Lessons
-							</a>
-						</div>
-					</h3>
-
-					<hr>
-
-				</div>		
-				<div class="body">
-					@foreach($likedPlans as $plan)
-						<a href="{{action('PlansController@show', $plan->id)}}"><h4>{{$plan->name}}</h4></a>
-						<p>Department: {{$plan->department}} </p>
-						<p>Grade Level: {{$plan->grade_level}}</p>
-					@endforeach
-
-				</div>
 
 			</div>
 			
