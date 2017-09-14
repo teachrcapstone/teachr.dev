@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function(){
+	return view('about.aboutus');
+});
+
 // Test route: remove later
 Route::get('/404', function(){
     return view('errors.404');
