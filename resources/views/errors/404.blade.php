@@ -17,11 +17,35 @@
         footer {
             color: white;
         }
+
+        #dunce{
+            background-color: #349967;
+            padding-top: 2em;
+            padding-bottom: 2em;
+            position: relative;
+        }
+
+        div#info{
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+
+
+        img#center-block{
+            position: relative;
+        }
+
     </style>
 @stop
 
 @section('content')
 	<body>
-		<h1>This lesson does not exist!</h1>				
+        <div class="container" id="dunce">
+            <div id="dunce">
+                <img class="center-block" src="/img/dunce.png">
+            </div>
+            <div id="info">The page you are looking for doesn't exist!</div>     
+        </div>				
 	</body>
 @stop
