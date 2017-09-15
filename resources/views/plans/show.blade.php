@@ -46,11 +46,22 @@
 		</div> --}}
 		<div {{--class="col-sm-8 col-md-8 col-lg-9"--}}>
 			<div class="lesson-tab">
-				<div class="panel panel-default">
+				<div class="panel panel-default box-shadow">
 					<div class="panel-heading">
-						<div class='h2 text-primary'>{{ $plan->name }}<span class='h5'> By <a href="{{ action('UsersController@show', $plan->created_by) }}">{{ $plan->user->name }}</a></span></div>
+						<div class='h1 text-primary'>{{ $plan->name }}<span class='h4'> By <a href="{{ action('UsersController@show', $plan->created_by) }}">{{ $plan->user->name }}</a></span></div>
 						<hr>
 						<div class="h4">Objective: <span class="h5">{{ $plan->objective }}</span></div>
+						<ul class="list-inline">
+							<li>
+								<div class="h6">Subject: <span>{{ $plan->department }}</span></div>
+							</li>
+							<li>
+								<div class="h6">Grade: <span> {{ $plan->grade_level }}</span></div>
+							</li>
+							<li>
+								<div class="h6">TEK: <span> {{ $plan->tek }}</span></div>
+							</li>
+						</ul>
 
 					</div>
 					<ul  class="nav nav-tabs">
@@ -65,21 +76,30 @@
 						<span class='text-center'>
 							@if (Auth::id() == $plan->created_by)
 
-								<a href="{{ action('PlansController@edit', $plan->id) }}" class='btn btn-xs btn-default'>Edit this plan</a>
+								<a href="{{ action('PlansController@edit', $plan->id) }}" class='btn btn-warning'>Edit <i class="glyphicon glyphicon-pencil"></i></a>
 
 							@elseif (!Auth::user()->hasFavorited($plan))
 
-								<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-xs btn-default'><span class='glyphicon glyphicon-duplicate'></span> Copy</a>
+								<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-default'><span class='glyphicon glyphicon-duplicate'></span> Copy</a>
 
 							@endif
 						</span>
 					</ul>
 				{{-- <div> --}}
-					<div class="tab-content clearfix">
-
-						<div class='panel tab-pane active' id="1a">
-							<div class="panel-body">
+					<div class="tab-content">
+						<div class='tab-pane active' id="1a">
+							<div class="lesson-content">
 								<p>{!! Purifier::clean($plan->content, 'settings') !!}</p>
+							</div>
+							<div class="panel-footer">
+								<ul class="list-inline">
+									<li>
+										<span class="h5">Created: <span class="h6">{{ $plan->created_at }}</span></span>
+									</li>
+									<li class='text-right'>
+										<span class="h5">Updated: <span class="h6">{{ $plan->updated_at }}</span></span>
+									</li>
+								</ul>
 							</div>
 						</div>
 
@@ -98,17 +118,17 @@
 
 								</div>
 							@endif
+							<div class="panel-footer">
+								<ul class="list-inline">
+									<li>
+										<span class="h5">Created: <span class="h6">{{ $plan->created_at }}</span></span>
+									</li>
+									<li class='text-right'>
+										<span class="h5">Updated: <span class="h6">{{ $plan->updated_at }}</span></span>
+									</li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="panel-footer">
-						<ul class="list-inline">
-							<li>
-								<span class="h5">Created: <span class="h6">{{ $plan->created_at }}</span></span>
-							</li>
-							<li class='text-right'>
-								<span class="h5">Updated: <span class="h6">{{ $plan->updated_at }}</span></span>
-							</li>
-						</ul>
 					</div>
 				{{-- </div> --}}
 				</div>
