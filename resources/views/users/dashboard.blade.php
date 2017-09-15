@@ -8,7 +8,7 @@
 			padding-top: 3em;
 		}
 		.im{
-			color: #339966;
+			color: white;
 			font-size: 12px;
 
 		}
@@ -91,7 +91,7 @@
 
 		<div class="row">
 			<div class="col-sm-5">
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<span class='h3'> Recent Activity </span>
 					</div>
@@ -121,7 +121,7 @@
 			</div>
 
 			<div class="col-sm-7">
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<span  class="h3"> My Lessons </span>
 							<div class="actions pull-right">
@@ -145,7 +145,7 @@
 					</div>
 				</div>
 				
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<span class="h3">My Posts</span> 
 						<div class="actions pull-right">
@@ -168,7 +168,7 @@
 				</div>
 	
 	
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">	
 						<span class="h3">Saved Lessons</span> 
 						<div class="actions pull-right">
