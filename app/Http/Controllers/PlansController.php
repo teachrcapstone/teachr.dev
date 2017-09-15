@@ -256,12 +256,10 @@ class PlansController extends Controller
             $plan->created_by = Auth::id();
             $plan->copied_from = $copied->id;
             $plan->save();
-
-            // $plan->favorite($copied);
         }
 
 
-        return \Redirect::action('PlansController@show', $copied->id);
+        return \Redirect::action('PlansController@show', $plan->id);
 
     }
 
