@@ -23,7 +23,7 @@ class CreatePlansTable extends Migration
             $table->string('grade_level')->nullable();
             $table->text('content')->nullable();
             $table->string('file_uploads')->nullable();
-            // $table->integer('copied_from')->unsigned()->nullable();
+            $table->integer('copied_from')->unsigned()->nullable();
             $table->integer('created_by')->unsigned();
             $table->foreign('created_by')->references('id')->on('users');
 

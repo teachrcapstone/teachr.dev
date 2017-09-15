@@ -128,7 +128,21 @@ class PlansController extends Controller
     {
         //
         $plan = Plan::findOrFail($id);
+        // dd($plan->created_by->);
+        $user = User::findOrFail($plan->created_by);
+        // dd($plan->copied_from);
+
+        if (isset($plan->copied_from)) {
+
+            $original = $user->favorites(Plan::class)->where('id', '=', $plan->copied_from)->get()->pull(0);
+            // dd($original->name);
+            $data['original'] = $original;
+        }
+
+
+
         $data['plan'] = $plan;
+
         return view('plans.show', $data);
     }
 
@@ -240,8 +254,10 @@ class PlansController extends Controller
             $plan->content = $copied->content;
             $plan->file_uploads = $copied->file_uploads;
             $plan->created_by = Auth::id();
-            // $plan->copied_from = $copied->user->id;
+            $plan->copied_from = $copied->id;
             $plan->save();
+
+            // $plan->favorite($copied);
         }
 
 

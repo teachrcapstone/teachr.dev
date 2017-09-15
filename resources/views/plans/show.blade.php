@@ -116,7 +116,9 @@
 			</div>
 		</div>
 		<div>
-			{{-- <p>{{ $plan->user->followed()}}</p> --}}
+			@if (isset($original))
+			Copied From: {{ $original->user->name }}
+			@endif
 		</div>
 	</main>
 @stop
