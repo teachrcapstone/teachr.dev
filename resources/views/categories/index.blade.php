@@ -31,7 +31,7 @@
 					
 					<div class="col-xs-6 text-center">
 						
-						<button class="btn btn-default btn-block" type="submit" name="category" value="5">Technology</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="technology">Technology</button>
 					</div>
 				</div>
 
@@ -44,7 +44,7 @@
 					</div>
 						
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default btn-block" type="submit" name="category" value="6">Classroom Management </button>	
+						<button class="btn btn-default btn-block" type="submit" name="category" value="management">Classroom Management </button>	
 					</div>
 				</div>
 
@@ -53,11 +53,11 @@
 				<div class="row">
 
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default btn-block" type="submit" name="category" value="3">Middle School (6-8)</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="middle">Middle School (6-8)</button>
 					</div>
 
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default btn-block" type="submit" name="category" value="7">Administration</button>		
+						<button class="btn btn-default btn-block" type="submit" name="category" value="admin">Administration</button>		
 					</div>
 					
 				</div>
@@ -66,11 +66,11 @@
 
 				<div class="row">
 					<div class="col-xs-6 text-center">
-						<button class="btn btn-default btn-block" type="submit" name="category" value="4">High School (9-12)</button>	
+						<button class="btn btn-default btn-block" type="submit" name="category" value="high">High School (9-12)</button>	
 					</div>
 
 					<div class="col-xs-6 text-center">	
-						<button class="btn btn-default btn-block" type="submit" name="category" value="8">Other</button>
+						<button class="btn btn-default btn-block" type="submit" name="category" value="other">Other</button>
 					</div>
 					
 				</div>
