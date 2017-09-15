@@ -45,7 +45,7 @@
             <div id="dunce">
                 <img class="center-block" src="/img/dunce.png">
             </div>
-            <div id="info">The page you are looking for doesn't exist!</div>     
+            <div id="info">404: The page you are looking for doesn't exist!</div>     
         </div>				
 	</body>
 @stop
