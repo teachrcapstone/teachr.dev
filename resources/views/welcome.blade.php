@@ -81,7 +81,7 @@
                         </div>              
                     </div>
 
-                    <h4>Through Teachr, you can connect and collaborate with fellow educators across the world. In uplifting each other, we can uplift students--and therby pave the way for a brighter future.<a href="{{action('Auth\AuthController@getRegister')}}">Let's get you started.</a></h4>
+                    <h4>Through Teachr, you can connect and collaborate with fellow educators across the world. In uplifting each other, we can uplift students--and therby pave the way for a brighter future. Do you want to be a part of our growing community? <a href="{{action('Auth\AuthController@getRegister')}}">Let's get you started.</a></h4>
                     <h4>Class is in session!</h4>
 				</div>
 			</div>
