@@ -33,13 +33,13 @@
 				<div class="row">
 					<div class="col-xs-4 col-xs-offset-2 col-lg-3 col-lg-offset-3 text-center">
 						<form action="{{action('Auth\AuthController@getLogin')}}">
-							<button class="btn btn-primary btn-md btn-block">login</button>
+							<button class="btn btn-primary btn-md btn-block">Login</button>
 						</form>
 					</div>
 
 					<div class="col-xs-4  col-lg-3  text-center">
 						<form action="{{action('Auth\AuthController@getRegister')}}">
-							<button class="btn btn-primary btn-md btn-block">signup</button>
+							<button class="btn btn-primary btn-md btn-block">Register</button>
 						</form>
 					</div>
 				</div>

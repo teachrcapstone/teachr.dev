@@ -61,22 +61,13 @@ class UsersController extends Controller
 		
 		$user = User::findOrFail($id);
 
-		$userPlans = $user->plans;
+		// $userPlans = $user->plans;
+		$userPlans = Plan::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
-
-		// $followers = $user->followers;
-		// $followers = $user->followings()->get();
-		// $followers = $user->followings()->get();
 		$followers = $user->followers;
-		$followings = $user->followings()->get();
-
-
-
-
-
-
-		
+		$followings = $user->followings()->orderBy('created_at', 'DESC')->get();
+	
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
@@ -84,7 +75,6 @@ class UsersController extends Controller
 		$data['followings'] = $followings;
 
 		Log::info('User account ' . $user->id . ' was viewed');
-
 
 		return view('users.show', $data);
 	}

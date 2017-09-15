@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container container-fluid">
 		<div class="navbar-header navbar-brand">
-			<i class="glyphicon glyphicon-apple"></i>Teachr
+			<a href="/" style="color: white"><i class="glyphicon glyphicon-apple"></i>Teachr</a>
 		</div>
 		<button class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
 			<span class="icon-bar"></span>
@@ -35,9 +35,10 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<!-- <li><a href="{{ action('Auth\AuthController@getLogout') }}"">Logout</a></li> -->
+					<li><a href="/about">About</a></li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{ action('UsersController@edit', Auth::id()) }}">Account Settings <i class="glyphicon glyphicon-pencil"></i></a></li>
 								<li><a href="{{ action('UsersController@show', Auth::id()) }}">View My Profile <i class="glyphicon glyphicon-user"></i></a></li>
@@ -51,6 +52,7 @@
 		 <div class="collapse navbar-collapse" id="navbar">
 
 			<ul class="nav navbar-nav navbar-right text-center">
+				<li><a href="/about">About</a></li>
 				<li><a href="{{ action('Auth\AuthController@getLogin')}}">Login <i class="glyphicon glyphicon-log-in"></i></a></li>
 				<li><a href="{{ action('Auth\AuthController@getRegister')}}">Register <i class="glyphicon glyphicon-log-in"></i></a></li>
 			</ul>
