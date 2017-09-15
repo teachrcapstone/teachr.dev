@@ -7,7 +7,7 @@
         	client.pick({
         		accept: "image/*",
         		maxFiles: 1,
-        		fromSources: ['local_file_system', 'facebook', 'googledrive', 'webcam'],
+        		fromSources: ['local_file_system', 'facebook', 'instagram', 'googledrive', 'webcam', 'imagesearch'],
         		imageMax: [500,500],
         	}).then(function(result){
         		console.log(JSON.stringify(result));
