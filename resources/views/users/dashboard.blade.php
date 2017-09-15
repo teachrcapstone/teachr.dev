@@ -74,7 +74,7 @@
 			</div>
 
 			<div class="col-sm-2">
-				<img class="img-responsive" src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}">
+				<a href="{{ action('UsersController@show' , Auth::id()) }}"><img class="img-responsive" src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$user->image}}"></a>
 			</div>
 
 		</div>
