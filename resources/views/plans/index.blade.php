@@ -122,14 +122,14 @@
 			@foreach ($plans as $plan)
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h4'> {{ $plan->name }} </span>
-						<span class='h6'> by {{ $plan->user->name }} </span></a>
+						<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h2'> {{ $plan->name }} </span>
+						<span class='h5'> by {{ $plan->user->name }} </span></a>
 
 					</div>
 					<div class="panel-body">
 						<p> <span class='h4'>Objective: </span> {{ $plan->objective }} </p>
 						<blockquote>
-							<p> {!! Purifier::clean($plan->content, 'settings') !!} </p>
+							<p> {!! str_limit(strip_tags(Purifier::clean($plan->content, 'settings')), 300) !!} </p>
 						</blockquote>
 					</div>
 					<div class="panel-footer">
