@@ -94,16 +94,17 @@
 								<div class="media">
 									<div class="media-left">
 										<img src="https://process.filestackapi.com/resize=w:300,h:300/circle/{{$post->user->image}}" class="media-object" style="width:60px">
-										<a href="{{ action('UsersController@show', $following->id) }}"><p class="text-center">{{$post->user->name}}</p></a>
 									</div>
 									
 									<div class="media-body">
-										<h4 class="media-heading">
-											<a href="{{action('PostsController@show', $post->id)}}"><strong>{{$post->title}}</strong></a>	
+										<h5 class="media-heading">
+											<a href="{{ action('UsersController@show', $following->id) }}"><strong>{{$post->user->name}}</strong></a>
 											<p><small>{{$post->created_at}}</small></p>
-										</h4>
-										<!-- <h4><em>| {{$post->content}}</em></h4> -->
-										<blockquote>{{$post->content}}</blockquote>
+										</h5>
+										<h3>
+											<a href="{{action('PostsController@show', $post->id)}}">{{$post->title}}</a>	
+<!-- 											<p>{{$post->content}}</p>
+ -->									</h3>							
 									</div>
 								</div>
 							</div>
