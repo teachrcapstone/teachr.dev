@@ -8,11 +8,12 @@
 			padding-top: 3em;
 		}
 		.im{
-			color: white;
+			/*color: white;*/
 			font-size: 12px;
 
 		}
-		.glyphicon-pencil{
+		
+		#pencil{
 			color: #EB5E55;
 		}
 
@@ -23,7 +24,7 @@
 	<main class="container">
 		<div class="row">
 			<div class="col-sm-5 text-center">
-				<h2> Welcome, {{ $user->name }}	<a href="{{ action('UsersController@edit', $user->id) }}" class="small"><i class="glyphicon glyphicon-pencil"></i></a></h2>
+				<h2> Welcome, {{ $user->name }}	<a href="{{ action('UsersController@edit', $user->id) }}" class="small"><i id=pencil class="glyphicon glyphicon-pencil"></i></a></h2>
 
 				<br>
 
@@ -91,7 +92,7 @@
 
 		<div class="row">
 			<div class="col-sm-5">
-				<div class="panel panel-primary">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<span class='h3'> Recent Activity </span>
 					</div>
@@ -121,7 +122,7 @@
 			</div>
 
 			<div class="col-sm-7">
-				<div class="panel panel-primary">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<span  class="h3"> My Lessons </span>
 							<div class="actions pull-right">
@@ -131,21 +132,19 @@
 					</div>
 
 					<div class="panel-body">  
-						<div class="well shadow-z-1">
-							@foreach($userPlans as $plan)
-								<h4>
-									<a href="{{action('PlansController@show', $plan->id)}}"><strong>{{$plan->name}}</strong></a>
-									<p><small> {{$plan->created_at}}</small></p>
-								</h4>
-								<p>Objective: {{$plan->objective}}</p>
-								<hr>
+						@foreach($userPlans as $plan)
+							<h4>
+								<a href="{{action('PlansController@show', $plan->id)}}"><strong>{{$plan->name}}</strong></a>
+								<p><small> {{$plan->created_at}}</small></p>
+							</h4>
+							<p>Objective: {{$plan->objective}}</p>
+							<hr>
 
-							@endforeach
-						</div>
+						@endforeach
 					</div>
 				</div>
 				
-				<div class="panel panel-primary">
+				<div class="panel panel-default">
 					<div class="panel-heading">
 						<span class="h3">My Posts</span> 
 						<div class="actions pull-right">
@@ -155,20 +154,18 @@
 					</div>
 
 					<div class="panel-body">  
-						<div class="well shadow-z-1">
-							@foreach($userPosts as $post)
-								<h4>
-									<a href="{{action('PostsController@show', $post->id)}}"><strong>{{$post->title}}</strong></a>
-									<p><small> {{$post->created_at}}</small></p>
-								</h4>
-								<hr>
-							@endforeach
-						</div>
+						@foreach($userPosts as $post)
+							<h4>
+								<a href="{{action('PostsController@show', $post->id)}}"><strong>{{$post->title}}</strong></a>
+								<p><small> {{$post->created_at}}</small></p>
+							</h4>
+							<hr>
+						@endforeach
 					</div>
 				</div>
 	
 	
-				<div class="panel panel-primary">
+				<div class="panel panel-default">
 					<div class="panel-heading">	
 						<span class="h3">Saved Lessons</span> 
 						<div class="actions pull-right">
@@ -178,30 +175,28 @@
 					</div>
 
 					<div class="panel-body">  
-						<div class="well shadow-z-1">
-							@foreach($likedPlans as $plan)
-								<h4>
-									<a href="{{ action('PlansController@show', $plan->id)}} "><strong>{{$plan->name}}</strong></a>
-									<p><small> {{$plan->created_at}}</small></p>
-								</h4>
-								<div class="row">
-									<div class="col-sm-4">
-										<strong>Department:</strong> {{$plan->department}}
-									</div>
-									<div class="col-sm-4">
-										<strong>Grade Level:</strong> {{$plan->grade_level}}
-									</div>
+						@foreach($likedPlans as $plan)
+							<h4>
+								<a href="{{ action('PlansController@show', $plan->id)}} "><strong>{{$plan->name}}</strong></a>
+								<p><small> {{$plan->created_at}}</small></p>
+							</h4>
+							<div class="row">
+								<div class="col-sm-4">
+									<strong>Department:</strong> {{$plan->department}}
 								</div>
-								<div class="row">
-									<div class="col-sm-12">		
-										<strong>Objective:</strong> {{$plan->objective}}
-									</div>
-									
+								<div class="col-sm-4">
+									<strong>Grade Level:</strong> {{$plan->grade_level}}
 								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">		
+									<strong>Objective:</strong> {{$plan->objective}}
+								</div>
+								
+							</div>
 
-								<hr>
-							@endforeach
-						</div>
+							<hr>
+						@endforeach
 					</div>
 				</div>
 

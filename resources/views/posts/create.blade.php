@@ -12,14 +12,23 @@
 			{!! csrf_field() !!}
 
 			<div class="form-group">
+
+				{!! $errors->first('title', '<span class="help-block">:message</span>') !!}
+
 				<input class="form-control" type="text" name="title" placeholder="Discussion Topic or Question" value="{{old('title')}}">
 			</div>
 
 			<div class="form-group">
-				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20"> {{ old('content') }} </textarea>
+
+				{!! $errors->first('content', '<span class="help-block">:message</span>') !!}
+
+				<textarea class="form-control" type="textarea" name="content" rows="4" cols="20" placeholder="Describe your post here..." ></textarea>
 			</div>
 
 			<div class="form-group">
+
+				{!! $errors->first('category', '<span class="help-block">:message</span>') !!}
+
 				<select name='category' class="form-control">
 					<option name="general" value="general">General</option>
 					<option name="elementary" value="elementary">Elementary School (K-5)</option>
