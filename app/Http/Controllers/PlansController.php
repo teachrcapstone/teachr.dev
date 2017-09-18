@@ -36,29 +36,54 @@ class PlansController extends Controller
             $search = $request->all();
             $plans = DB::table('plans');
 
-            // dd($plans);
 
             foreach($search as $key => $value){
                 if ($key == "search" && !empty($value)){
-                    $plans->where('content', 'like', '%'. $value . '%')
-                          ->orWhere('name', 'like', '%' . $value . "%")
-                          ->orWhere('objective', 'like', '%' . $value . '%');
-                } elseif ($key != 'search'){
+                    $plans->where(function($query) use ($value){
+                        $query->where('content', 'like', '%'. $value . '%')
+                              ->orWhere('name', 'like', '%' . $value . "%")
+                              ->orWhere('objective', 'like', '%' . $value . '%');
+                    });
+                } elseif ($key != 'search' && !empty($value)){
                     $plans->where($key, 'like', $value);
                 } else {
                     continue;
                 }
             }
 
-            // dd($plans);
-            $plans = $plans->get();
-            $result = Plan::hydrate($plans);
-            $data['plans'] = $result;
+            $result = $plans->get();
+
+            $plans = Plan::hydrate($result);
 
         } else {
             $plans = Plan::all();
-            $data['plans'] = $plans;
         }
+        // foreach($plans as $plan){
+        //     $parser = new \HtmlDomParser;
+        //     $html = $parser->strGetHtml("<html><body>" . $plan->content . "</body></html>");
+        //
+        //     $content = $html->find('body', 0);
+        //
+        //     if (count($content->find('p')) > 0) {
+        //         $paragraphs = $content->find('p');
+        //         $p = 0;
+        //         while (preg_match('/[A-Za-z]+/', $content->find('p', $p)->plaintext) == 0) {
+        //             $p += 1;
+        //         }
+        //         $plan->content = $content->find('p', $p)->innertext;
+        //
+        //         // for ($i = 0, $j = 0; $i < count($paragraphs) || $j < 1; $i++, $j++){
+        //         //     if (preg_match('/[A-Za-z]+/', $content->find('p', $i)->plaintext) == 0) {
+        //         //         continue;
+        //         //     } else {
+        //         //         $plan->content .= $content->find('p', $i)->innertext;
+        //         //     }
+        //         // }
+        //     } else {
+        //            $plan->content = $content->innertext;
+        //     };
+        // }
+        $data['plans'] = $plans;
         // var_dump($plans);
 
         return view('plans.index', $data);
@@ -185,7 +210,7 @@ class PlansController extends Controller
 
         $request->session()->flash("successMessage" , "Your plan was successfully updated");
 
-        return \Redirect::action('UsersController@show', Auth::id());
+        return \Redirect::action('PlansController@show', $plan->id);
     }
 
     /**
