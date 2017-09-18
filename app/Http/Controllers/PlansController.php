@@ -58,6 +58,32 @@ class PlansController extends Controller
         } else {
             $plans = Plan::all();
         }
+        // foreach($plans as $plan){
+        //     $parser = new \HtmlDomParser;
+        //     $html = $parser->strGetHtml("<html><body>" . $plan->content . "</body></html>");
+        //
+        //     $content = $html->find('body', 0);
+        //
+        //     if (count($content->find('p')) > 0) {
+        //         $paragraphs = $content->find('p');
+        //         $p = 0;
+        //         while (preg_match('/[A-Za-z]+/', $content->find('p', $p)->plaintext) == 0) {
+        //             $p += 1;
+        //         }
+        //         $plan->content = $content->find('p', $p)->innertext;
+        //
+        //         // for ($i = 0, $j = 0; $i < count($paragraphs) || $j < 1; $i++, $j++){
+        //         //     if (preg_match('/[A-Za-z]+/', $content->find('p', $i)->plaintext) == 0) {
+        //         //         continue;
+        //         //     } else {
+        //         //         $plan->content .= $content->find('p', $i)->innertext;
+        //         //     }
+        //         // }
+        //     } else {
+        //            $plan->content = $content->innertext;
+        //     };
+        // }
+        $data['plans'] = $plans;
         // var_dump($plans);
 
         return view('plans.index', $data);
