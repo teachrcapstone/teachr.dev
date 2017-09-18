@@ -119,19 +119,20 @@
 		</nav> --}}
 		<div {{-- class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"--}}>
 			<div class="">
-				<a class="collapsed" role="button" data-toggle="collapse" data-targer="#filters" href="#filters">
-					Filter Results
+				<a class="collapsed label label-warning label-lg" role="button" data-toggle="collapse" data-targer="#filters" href="#filters">
+					<i class="glyphicon glyphicon-filter"></i>Filter Results
 				</a>
 			</div>
+			<br>
 			<form name='filter' id="filter" action="{{ action('PlansController@index') }}" method="get">
 			<div class='collapse' id="filters">
 					<ul class="list-inline">
 						<li data-toggle='collapse'>
-							<input type="text" name="search" placeholder="Keyword" method='GET'>
+							<input class='form-control' type="text" name="search" placeholder="Keyword" method='GET'>
 
 						</li>
 						<li data-toggle='collapse'>
-							<select form='filter' method='get' class="" name="department">
+							<select form='filter' method='get' class="form-control" name="department">
 								<option value="">All</option>
 								<option value="math">Math</option>
 								<option value="science">Science</option>
@@ -140,7 +141,7 @@
 							</select>
 						</li>
 						<li data-toggle='collapse'>
-							<select form='filter' method='get' class="" name="grade_level">
+							<select form='filter' method='get' class="form-control" name="grade_level">
 								<option value="">All</option>
 								<option value="K">K</option>
 								<option value="1">1</option>
@@ -159,10 +160,11 @@
 						</li>
 						<li data-toggle="collapse">
 						</form>
-						<button method='get' type="submit">Filter</button>
+						<button class='btn btn-primary' method='get' type="submit">Filter</button>
 						</li>
 					</ul>
 			</div>
+			<br>
 				<div class="grid">
 					@foreach ($plans as $plan)
 					<div class="grid-sizer col-lg-4 col-md-6 col-sm-12 col-xs-12"></div>
@@ -174,8 +176,9 @@
 										<a class="reduce btn btn-xs btn-default hidden" hidden><i class="glyphicon glyphicon-resize-small"></i></a>
 									</div>
 									<div class="text-left">
-										<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h2'> {{ $plan->name }} </span>
-											<span class='h5'> by {{ $plan->user->name }} </span></a>
+										<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h2'> {{ $plan->name }} </span></a> by
+										<a href=" {{action('UsersController@show', $plan->user->id)}}">
+											 <span class='h5'> {{ $plan->user->name }} </span></a>
 									</div>
 
 								</div>
@@ -190,9 +193,9 @@
 								</div>
 								<div class="panel-footer">
 									<ul class='list-inline'>
-										<li> {{ $plan->department }} </li>
-										<li> {{ $plan->tek }} </li>
-										<li> {{ $plan->grade_level }} </li>
+										<li> Subject: {{ $plan->department }} </li>
+										<li> TEK: {{ $plan->tek }} </li>
+										<li> Grade: {{ $plan->grade_level }} </li>
 									</ul>
 								</div>
 							</div>

@@ -10,7 +10,7 @@
 
 	<main class="container">
 
-		<div class="panel panel-info">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h1>Create a Lesson Plan</h1>
 			</div>

@@ -8,11 +8,11 @@
 
 @section('content')
 
-	<div><i class="glyphicon glyphicon-menu-left"></i>Back to Lessons</div>
+	{{-- <div><i class="glyphicon glyphicon-menu-left"></i>Back to Lessons</div> --}}
 <main>
 	<div class="container">
 
-		<div class="panel panel-info">
+		<div class="panel panel-default">
 		<div class="panel-heading">
 			<h1>Update Your Lesson Plan</h1>
 		</div>

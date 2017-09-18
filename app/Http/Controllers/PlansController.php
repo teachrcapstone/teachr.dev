@@ -210,7 +210,7 @@ class PlansController extends Controller
 
         $request->session()->flash("successMessage" , "Your plan was successfully updated");
 
-        return \Redirect::action('UsersController@show', Auth::id());
+        return \Redirect::action('PlansController@show', $plan->id);
     }
 
     /**
