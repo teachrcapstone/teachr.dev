@@ -163,20 +163,169 @@
 						</li>
 					</ul>
 			</div>
+				<div class="grid">
+					@foreach ($plans as $plan)
+					<div class="grid-sizer col-lg-4 col-md-6 col-sm-12 col-xs-12"></div>
+					<div class="grid-item col-lg-4 col-md-6 col-sm-12 col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="text-left">
+										<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h2'> {{ $plan->name }} </span>
+											<span class='h5'> by {{ $plan->user->name }} </span></a>
+									</div>
+									<div class="text-right">
+										<a class='expand'><i class="glyphicon glyphicon-resize-full"></i></a>
+										<a class="reduce" hidden><i class="glyphicon glyphicon-resize-small"></i></a>
+									</div>
+
+								</div>
+								<div class="panel-body">
+									<p> <span class='h4'>Objective: </span> {{ $plan->objective }} </p>
+									<blockquote class='plan-preview'>
+
+									</blockquote>
+									<blockquote class='plan-content' hidden>
+										<p> {!! Purifier::clean($plan->content, 'settings') !!} </p>
+									</blockquote>
+								</div>
+								<div class="panel-footer">
+									<ul class='list-inline'>
+										<li> {{ $plan->department }} </li>
+										<li> {{ $plan->tek }} </li>
+										<li> {{ $plan->grade_level }} </li>
+									</ul>
+								</div>
+							</div>
 					</div>
-					<div class="panel-body">
-						<p> <span class='h4'>Objective: </span> {{ $plan->objective }} </p>
-						<blockquote>
-							<p> {!! str_limit(strip_tags(Purifier::clean($plan->content, 'settings')), 300) !!} </p>
-						</blockquote>
-					</div>
-					<div class="panel-footer">
-						<p> {{ $plan->department }} </p>
-						<p> {{ $plan->tek }} </p>
-						<p> {{ $plan->grade_level }} </p>
-					</div>
+				@endforeach
 				</div>
-			@endforeach
 		</div>
 	</main>
+@stop
+@section('scripts')
+	<style media="screen">
+		.grid {
+			width: 100%;
+		}
+		.grid-item {
+			float: left;
+
+		}
+		.grid-sizer,
+		.grid-item {
+					margin-bottom: 5px;
+					margin-top: 0;}
+		/* 2 columns wide */
+		.grid-item--width2 { width: 40%; }
+	</style>
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$('.plan-preview').each(function (i) {
+
+				var paragraphs = $('.plan-content')[i];
+
+				paragraphs = $(paragraphs).find('p');
+
+				array = [];
+
+				paragraphs.each(function(){
+					if (this.textContent.search(/\w+/) >= 0) { array.push(this.outerHTML);
+					return array
+					}
+				});
+
+				if (array.length >= 8){
+
+					array2 = [];
+
+					for (var i = 0; i < 8; i++) {
+						array2.push(array.shift());
+					}
+
+					var string = '';
+					array2.forEach(function(p){
+						string += p.toString();
+					});
+
+
+				} else {
+
+					var string = '';
+
+					array.forEach(function(p){
+						string += p.toString();
+					});
+
+				}
+
+				$(this).html(string);
+
+			});
+
+			$('.expand').each(function(index){
+
+				var preview = $('.plan-preview')[index];
+
+				var content = $('.plan-content')[index];
+
+				var reduce = $('.reduce')[index];
+
+				var gridItem = $('.grid-item')[index];
+
+				$(this).click(function(e) {
+
+					e.preventDefault();
+					$(this).toggle();
+					$(reduce).toggle();
+					$(preview).toggle();
+					$(content).toggle();
+					$(gridItem).toggleClass('col-lg-4 col-lg-8 col-md-6 col-md-12');
+					$grid.masonry();
+
+				});
+
+			});
+
+			$('.reduce').each(function(index){
+
+				var preview = $('.plan-preview')[index];
+
+				var content = $('.plan-content')[index];
+
+				var expand = $('.expand')[index];
+
+				var gridItem = $('.grid-item')[index];
+
+				$(this).click(function(e) {
+
+					e.preventDefault();
+					$(this).toggle();
+					$(expand).toggle();
+					$(preview).toggle();
+					$(content).toggle();
+					$(gridItem).toggleClass('col-lg-4 col-lg-8 col-md-6 col-md-12');
+					$grid.masonry();
+
+				});
+
+			});
+
+			var $grid = $('.grid').masonry({
+				columnWidth: '.grid-sizer',
+				itemSelector: '.grid-item',
+				percentPosition: true,
+				// gutter: 5
+			});
+			// console.log($grid);
+			var $items = $('grid-items');
+
+			$grid.masonry('layout');
+		});
+	</script>
+	{{-- <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script type="text/javascript">
+
+	</script> --}}
 @stop
