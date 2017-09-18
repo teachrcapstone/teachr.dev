@@ -169,13 +169,13 @@
 					<div class="grid-item col-lg-4 col-md-6 col-sm-12 col-xs-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
+									<div class="text-right">
+										<a class='expand btn btn-xs btn-default'><i class="glyphicon glyphicon-resize-full"></i></a>
+										<a class="reduce btn btn-xs btn-default hidden" hidden><i class="glyphicon glyphicon-resize-small"></i></a>
+									</div>
 									<div class="text-left">
 										<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h2'> {{ $plan->name }} </span>
 											<span class='h5'> by {{ $plan->user->name }} </span></a>
-									</div>
-									<div class="text-right">
-										<a class='expand'><i class="glyphicon glyphicon-resize-full"></i></a>
-										<a class="reduce" hidden><i class="glyphicon glyphicon-resize-small"></i></a>
 									</div>
 
 								</div>
@@ -277,8 +277,8 @@
 				$(this).click(function(e) {
 
 					e.preventDefault();
-					$(this).toggle();
-					$(reduce).toggle();
+					$(this).toggleClass('hidden');
+					$(reduce).toggleClass('hidden');
 					$(preview).toggle();
 					$(content).toggle();
 					$(gridItem).toggleClass('col-lg-4 col-lg-8 col-md-6 col-md-12');
@@ -301,8 +301,8 @@
 				$(this).click(function(e) {
 
 					e.preventDefault();
-					$(this).toggle();
-					$(expand).toggle();
+					$(this).toggleClass('hidden');
+					$(expand).toggleClass('hidden');
 					$(preview).toggle();
 					$(content).toggle();
 					$(gridItem).toggleClass('col-lg-4 col-lg-8 col-md-6 col-md-12');
