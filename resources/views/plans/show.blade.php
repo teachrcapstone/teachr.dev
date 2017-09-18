@@ -73,6 +73,13 @@
 								<a href="#2a" data-toggle="tab">Original File</a>
 							</li>
 						@endif
+						<span>
+							@if(Auth::user()->hasLiked($plan))
+								<a href="{{ action('PlansController@unlike', $plan->id )}}" class="btn btn-success"> <span class="glyphicon glyphicon-star"></span>Unsave</a>
+							@else
+								<a href="{{ action('PlansController@like', $plan->id )}}" class="btn btn-success"> <span class="glyphicon glyphicon-star"></span>Save</a>
+							@endif
+						</span>
 						<span class='text-center'>
 							@if (Auth::id() == $plan->created_by)
 
@@ -80,7 +87,7 @@
 
 							@elseif (!Auth::user()->hasFavorited($plan))
 
-								<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-default'><span class='glyphicon glyphicon-duplicate'></span> Copy</a>
+								<a href="{{ action('PlansController@copy', $plan->id) }}" class='btn btn-warning'><span class='glyphicon glyphicon-duplicate'></span> Copy</a>
 
 							@endif
 						</span>
