@@ -8,10 +8,9 @@
 
 	<main class="container">
 		<h1 class='text-center'>Find Lesson Plans</h1>
-		<nav class="col-md-4 col-lg-3">
+		{{-- <nav class="col-md-4 col-lg-3">
 			<h2>Filter results</h2>
 			<ul class="nav nav-stacked">
-				{{-- @if ($request->department) --}}
 				<form class="" action="{{ action('PlansController@index') }}" method="get">
 
 					<input type="text" name="search" placeholder="Search" method='GET'>
@@ -117,14 +116,53 @@
 				<button type="submit">Filter</button>
 				</form>
 			</ul>
-		</nav>
-		<div class="col-md-8 col-lg-9">
-			@foreach ($plans as $plan)
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<a href="{{ action('PlansController@show', $plan->id) }}"><span class='h2'> {{ $plan->name }} </span>
-						<span class='h5'> by {{ $plan->user->name }} </span></a>
+		</nav> --}}
+		<div {{-- class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"--}}>
+			<div class="">
+				<a class="collapsed" role="button" data-toggle="collapse" data-targer="#filters" href="#filters">
+					Filter Results
+				</a>
+			</div>
+			<form name='filter' id="filter" action="{{ action('PlansController@index') }}" method="get">
+			<div class='collapse' id="filters">
+					<ul class="list-inline">
+						<li data-toggle='collapse'>
+							<input type="text" name="search" placeholder="Keyword" method='GET'>
 
+						</li>
+						<li data-toggle='collapse'>
+							<select form='filter' method='get' class="" name="department">
+								<option value="">All</option>
+								<option value="math">Math</option>
+								<option value="science">Science</option>
+								<option value="social Studies">Social Studies</option>
+								<option value="english">English</option>
+							</select>
+						</li>
+						<li data-toggle='collapse'>
+							<select form='filter' method='get' class="" name="grade_level">
+								<option value="">All</option>
+								<option value="K">K</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+						</li>
+						<li data-toggle="collapse">
+						</form>
+						<button method='get' type="submit">Filter</button>
+						</li>
+					</ul>
+			</div>
 					</div>
 					<div class="panel-body">
 						<p> <span class='h4'>Objective: </span> {{ $plan->objective }} </p>

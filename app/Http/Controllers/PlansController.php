@@ -36,28 +36,27 @@ class PlansController extends Controller
             $search = $request->all();
             $plans = DB::table('plans');
 
-            // dd($plans);
 
             foreach($search as $key => $value){
                 if ($key == "search" && !empty($value)){
-                    $plans->where('content', 'like', '%'. $value . '%')
-                          ->orWhere('name', 'like', '%' . $value . "%")
-                          ->orWhere('objective', 'like', '%' . $value . '%');
-                } elseif ($key != 'search'){
+                    $plans->where(function($query) use ($value){
+                        $query->where('content', 'like', '%'. $value . '%')
+                              ->orWhere('name', 'like', '%' . $value . "%")
+                              ->orWhere('objective', 'like', '%' . $value . '%');
+                    });
+                } elseif ($key != 'search' && !empty($value)){
                     $plans->where($key, 'like', $value);
                 } else {
                     continue;
                 }
             }
 
-            // dd($plans);
-            $plans = $plans->get();
-            $result = Plan::hydrate($plans);
-            $data['plans'] = $result;
+            $result = $plans->get();
+
+            $plans = Plan::hydrate($result);
 
         } else {
             $plans = Plan::all();
-            $data['plans'] = $plans;
         }
         // var_dump($plans);
 
