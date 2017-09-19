@@ -126,7 +126,7 @@
 					<div class="panel-heading">
 						<span  class="h3"> My Lessons </span>
 							<div class="actions pull-right">
-								<a class="im" href="#" class="btn"><i class="glyphicon glyphicon-search"></i>View My Lessons </a>
+								<a class="im" href="{{ action('UsersController@myPlans')}}" class="btn"><i class="glyphicon glyphicon-search"></i>View My Lessons </a>
 								<a class="im" href="{{ action('PlansController@create') }}" class="btn"><i class="glyphicon glyphicon-plus"></i>Add Lesson</a>
 							</div>
 					</div>
