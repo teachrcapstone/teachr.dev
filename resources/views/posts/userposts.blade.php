@@ -14,9 +14,11 @@
 			<h2>My Posts</h2>
 			<h4>Total Results: {{ $userPosts->total() }}</h4>
 				@foreach($userPosts as $post)
-					<a href="{{action('PostsController@show', $post->id)}}"><h3>{{$post->title}}</h3></a>
+					<h3>
+						<a href="{{action('PostsController@show', $post->id)}}">{{$post->title}}</a>
+						<p><small>Created: {{$post->created_at}}</small></p>
+					</h3>
 					<p>{{$post->content }}</p>
-					<p>Created: {{$post->created_at}}</p>
 
 					<hr>
 				@endforeach
