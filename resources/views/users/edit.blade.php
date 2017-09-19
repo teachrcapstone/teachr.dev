@@ -27,7 +27,7 @@
 						
 						<div class="form-group" style="margin-top: 1em;">
 				
-							<input type="BUTTON"  class="btn" value="update icon..." id="updateIcon filestackConfirm" onclick="updateIcon()">
+							<input type="BUTTON"  class="btn" value="Update Profile Picture" id="updateIcon filestackConfirm" onclick="updateIcon()">
 						</div>
 					</div>
 					

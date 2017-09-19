@@ -158,6 +158,19 @@ class UsersController extends Controller
 	 return view('posts.userposts', $data);
 	}
 
+	public function myPlans()
+	{
+		$user = User::findOrFail(Auth::id());
+
+		$userPlans = Plan::where('created_by', $user->id)->orderBy('created_at','DESC')->paginate(10);
+
+		$data['userPlans'] = $userPlans;
+	 
+	 	return view('plans.userplans', $data);
+
+
+	}
+
 	public function savedPlans()
 	{
 	 	$user = User::findOrFail(Auth::id());
