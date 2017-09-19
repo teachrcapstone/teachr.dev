@@ -59,7 +59,7 @@
 				</div>
 
 				@if(!empty($plan->file_uploads))
-					<div>
+					<div class='hidden-xs hidden-sm'>
 
 						<iframe src="https://process.filestackapi.com/output=f:pdf/{{$plan->file_uploads}}" width='100%' height='auto' class="embed-responsive-item" allowfullscreen></iframe>
 
