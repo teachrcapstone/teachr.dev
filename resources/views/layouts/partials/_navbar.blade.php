@@ -18,7 +18,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Lessons <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="{{ action('PlansController@index') }}">View Lessons</a></li>
-								<li><a href="#">View My Lessons</a></li>
+								<li><a href="{{ action('UsersController@myPlans') }}">View My Lessons</a></li>
 								<li><a href="{{ action('PlansController@create') }}">Add Lesson</a></li>
 							</ul>
 					</li>
