@@ -23,7 +23,7 @@ class PlansController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function _construct(){
+    public function __construct(){
          $this->middleware('auth');
     }
 
@@ -182,9 +182,13 @@ class PlansController extends Controller
         //
         $plan = Plan::findOrFail($id);
 
-        $data['plan'] = $plan;
+        if (Auth::id() == $plan->user->id) {
+            $data['plan'] = $plan;
 
-        return view('plans.edit', $data);
+            return view('plans.edit', $data);
+        } else {
+            return view('errors.403');
+        };
     }
 
     /**

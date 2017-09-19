@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use \App\Models\Post; 
-use \App\User as User; 
+use \App\Models\Post;
+use \App\User as User;
 use Log;
 use Auth;
 use DB;
@@ -40,15 +40,15 @@ class PostsController extends Controller
 				$q = $request->category;
 
 				$posts = Post::search($q);
-				
+
 			}
 
 			$data['category'] = $request->category;
 
 			$data['posts'] = $posts;
-	   
+
 			return view('posts.index', $data);
-		} 
+		}
 
 
 		return view('categories.index');
@@ -67,11 +67,11 @@ class PostsController extends Controller
 	//         ->orderBy('created_at','DESC')
 	//         ->paginate(4);
 	//     }
-  
+
 	//     Log::info('A user just visited the index page');
-		
+
 	//     $data['posts'] = $posts;
-	   
+
 	//     return view('posts.index', $data);
 
 	// }
@@ -126,9 +126,9 @@ class PostsController extends Controller
 	public function show($id)
 	{
 		$post = Post::findOrFail($id);
-		
+
 		$data['post'] = $post;
-		// $data['slug'] = $slug;   
+		// $data['slug'] = $slug;
 
 		Log::info('Post ' . $post->id . ' was viewed');
 
@@ -143,11 +143,17 @@ class PostsController extends Controller
 	 */
 	public function edit($id)
 	{
-		$post = Post::findOrFail($id);    
 
-		$data['post'] = $post;
+		$post = Post::findOrFail($id);
 
-		return view('posts.edit', $data);
+		if (Auth::id() == $post->user->id) {
+
+			$data['post'] = $post;
+
+			return view('posts.edit', $data);
+		} else {
+			return view('errors.403');
+		};
 	}
 
 	/**

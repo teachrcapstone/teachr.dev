@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use \App\User as User; 
-use \App\Models\Post; 
-use \App\Models\Plan; 
+use \App\User as User;
+use \App\Models\Post;
+use \App\Models\Plan;
 
-use Log; 
+use Log;
 use Auth;
 
 class UsersController extends Controller
@@ -58,7 +58,7 @@ class UsersController extends Controller
 	 */
 	public function show($id)
 	{
-		
+
 		$user = User::findOrFail($id);
 
 		// $userPlans = $user->plans;
@@ -67,7 +67,7 @@ class UsersController extends Controller
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->limit(3)->get();
 		$followers = $user->followers;
 		$followings = $user->followings()->orderBy('created_at', 'DESC')->get();
-	
+
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
@@ -87,11 +87,15 @@ class UsersController extends Controller
 	 */
 	public function edit($id)
 	{
-		$user = User::findOrFail($id);    
 
-		$data['user'] = $user;
+		$user = User::findOrFail($id);
+ 		if (Auth::id() == $user->id) {
+			$data['user'] = $user;
 
-		return view('users.edit', $data);
+			return view('users.edit', $data);
+		} else {
+			return view('errors.403');
+		};
 	}
 
 	/**
@@ -143,7 +147,7 @@ class UsersController extends Controller
 	}
 
 	public function myPosts()
-	{    
+	{
 	 	$user = User::findOrFail(Auth::id());
 
 		$userPosts = Post::where('created_by', $user->id)->orderBy('created_at','DESC')->paginate(10);
@@ -155,7 +159,7 @@ class UsersController extends Controller
 	}
 
 	public function savedPlans()
-	{    
+	{
 	 	$user = User::findOrFail(Auth::id());
 
 	 	$likedIds = $user->likes(Plan::class)->lists('followable_id')->toArray();
@@ -193,7 +197,7 @@ class UsersController extends Controller
 
 		$likedPlans = Plan::whereIn('id', $likedIds)->orderBy('created_at','DESC')->limit(3)->get();
 
-		
+
 		$data['user'] = $user;
 		$data['userPosts'] = $userPosts;
 		$data['userPlans'] = $userPlans;
