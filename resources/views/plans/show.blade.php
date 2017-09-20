@@ -103,7 +103,10 @@
 				{{-- <div> --}}
 					<div class="tab-content">
 						<div class='tab-pane active' id="1a">
-							<div class="lesson-content">
+							<div class="lesson-content hidden-xs hidden-sm">
+								<p>{!! Purifier::clean($plan->content, 'settings') !!}</p>
+							</div>
+							<div class="container-fluid hidden-lg hidden-md">
 								<p>{!! Purifier::clean($plan->content, 'settings') !!}</p>
 							</div>
 							<div class="panel-footer">
