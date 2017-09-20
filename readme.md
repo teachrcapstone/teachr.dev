@@ -1,6 +1,6 @@
 ## Teachr
 
-Teachr is a full-stack web application built with a PHP/Laravel which facilitates collaboration among teachers. This was b
+Teachr is a full-stack web application built with a PHP/Laravel which facilitates collaboration among teachers.  
 
 Features include:
 
