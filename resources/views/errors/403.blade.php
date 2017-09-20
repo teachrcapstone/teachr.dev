@@ -43,9 +43,9 @@
 	<body>
         <div class="container" id="dunce">
             <div id="dunce">
-                <img class="center-block" src="/img/dunce.png">
+                <img class="center-block" src="/img/403dunce.png">
             </div>
-            <div id="info">403: You're not allowed to do that! </div>     
+            <div id="info">You're not allowed to do that! </div>     
         </div>
 	</body>
 @stop
