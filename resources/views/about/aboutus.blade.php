@@ -30,7 +30,7 @@
 						<img class="img-responsive" src="/img/vivian400.png">
 						<figcaption class="text-center">
 							<h3>Vivian Canales</h3>
-							<a href="" target="_blank"><p><i class="fa fa-user fa-md icon" aria-hidden="true"></i> viviancanales.com</p></a>
+							<a href="http://viviancanales.com" target="_blank"><p><i class="fa fa-user fa-md icon" aria-hidden="true"></i> viviancanales.com</p></a>
 							<a href="mailto:vcnales@gmail.com"><p><i class="fa fa-envelope fa-md icon"></i> vcnales@gmail.com</p></a>
 							<a href="https://github.com/viviancan" target="_blank"><p><i class="fa fa-github fa-md icon" aria-hidden="true"></i> viviancan</p></a>
 
@@ -42,7 +42,7 @@
 						<img class="img-responsive" src="/img/eman400.png">
 						<figcaption class="text-center">
 							<h3>Emmanuelle T. Maher</h3>
-							<a href="" target="_blank"><p><i class="fa fa-user fa-md icon" aria-hidden="true"></i> emmanuelle.tech</p></a>
+							<a href="https://emmanuelletaylormaher.github.io/" target="_blank"><p><i class="fa fa-user fa-md icon" aria-hidden="true"></i> emmanuelle.tech</p></a>
 							<a href="mailto:emmanuelle.t.maher@gmail.com"><p><i class="fa fa-envelope fa-md icon"></i> emmanuelle.t.maher@gmail.com</p></a>
 							<a href="https://github.com/emmanuelletaylormaher" target="_blank"><p><i class="fa fa-github fa-md icon" aria-hidden="true"></i> emmanuelletaylormaher</p></a>
 						</figcaption>
